@@ -1,0 +1,25 @@
+Start reading vector           1's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+ return_port = 57266   expected = 57266 
+
+Simulation ended after                 2725 cycles.
+
+Simulation completed with success
+
+Start reading vector           2's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+ return_port =  1852   expected =  1852 
+
+Simulation ended after                  172 cycles.
+
+Simulation completed with success
+
+No more values found. Simulation(s) executed:           2.
+
+- /root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output//simulation/testbench_icrc_tb.v:257: Verilog $finish
+No more values found. Simulation(s) executed:           2.
+
+- /root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output//simulation/testbench_icrc_tb.v:298: Verilog $finish
+- /root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output//simulation/testbench_icrc_tb.v:298: Second verilog $finish, exiting

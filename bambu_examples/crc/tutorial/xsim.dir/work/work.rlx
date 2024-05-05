@@ -1,0 +1,7 @@
+0.7
+2020.2
+Oct 13 2023
+20:21:30
+/root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output/simulation/testbench_icrc.v,1713439897,verilog,,,,icrc_tb;icrc_tb_top,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,
+/root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output/simulation/testbench_main.v,1713367783,verilog,,,,main_tb;main_tb_top,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,
+/root/PandA-bambu-2023.1/examples/crc/tutorial/icrc.v,1713439896,verilog,,,,ARRAY_1D_STD_BRAM_NN_SDS;ARRAY_1D_STD_BRAM_NN_SDS_BASE;ARRAY_1D_STD_DISTRAM_NN_SDS;BMEMORY_CTRLN;IIconvert_expr_FU;IIdata_converter_FU;IUconvert_expr_FU;IUdata_converter_FU;MUX_GATE;UIdata_converter_FU;UUconvert_expr_FU;UUdata_converter_FU;_icrc;addr_expr_FU;bit_and_expr_FU;bit_ior_expr_FU;bit_xor_expr_FU;constant_value;controller_icrc;datapath_icrc;extract_bit_expr_FU;flipflop_AR;ge_expr_FU;icrc;lshift_expr_FU;lut_expr_FU;multi_read_cond_FU;ne_expr_FU;plus_expr_FU;read_cond_FU;register_SE;register_STD;ui_bit_and_expr_FU;ui_bit_xor_expr_FU;ui_cond_expr_FU;ui_eq_expr_FU;ui_extract_bit_expr_FU;ui_ge_expr_FU;ui_le_expr_FU;ui_lshift_expr_FU;ui_ne_expr_FU;ui_plus_expr_FU;ui_pointer_plus_expr_FU;ui_rshift_expr_FU;ui_view_convert_expr_FU,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<bambu_results bambu_args="/tmp/.mount_bambu-ZViI1N/usr/bin/bambu -O3 --simulate --generate-tb=/root/PandA-bambu-2023.1/examples/mm/test.xml --simulator=ICARUS --pretty-print=a.c --channels-type=MEM_ACC_NN --device-name=EP2C70F896C6-R --memory-allocation-policy=EXT_PIPELINED_BRAM --experimental-setup=BAMBU --flopoco --top-fname=mm /root/PandA-bambu-2023.1/examples/mm/module.c " bambu_version="Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main" timestamp="2024-05-05T15:03:21" benchmark_name="mm_0">
+  <CYCLES value="5410"/>
+  <HLS_execution_time value="0.689999999999999999998"/>
+</bambu_results>

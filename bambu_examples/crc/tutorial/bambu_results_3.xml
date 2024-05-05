@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<bambu_results bambu_args="/tmp/.mount_bambu-L7k5uw/usr/bin/bambu --top-fname=icrc --generate-tb=../test_icrc.xml --simulate --simulator=XSIM ../spec.c " bambu_version="Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main" timestamp="2024-04-18T13:32:27" benchmark_name="icrc_3">
+  <CYCLES value="1448"/>
+  <HLS_execution_time value="1.21000000000000000003"/>
+</bambu_results>

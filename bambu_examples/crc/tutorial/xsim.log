@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Thu Apr 18 13:31:54 2024
+# Process ID: 2067
+# Current directory: /root/PandA-bambu-2023.1/examples/crc/tutorial
+# Command line: xsim -mode tcl -source {xsim.dir/icrctb_behav/xsim_script.tcl}
+# Log file: /root/PandA-bambu-2023.1/examples/crc/tutorial/xsim.log
+# Journal file: /root/PandA-bambu-2023.1/examples/crc/tutorial/xsim.jou
+# Running On: JACK, OS: Linux, CPU Frequency: 1995.383 MHz, CPU Physical cores: 4, Host memory: 4053 MB
+#-----------------------------------------------------------
+source xsim.dir/icrctb_behav/xsim_script.tcl
+# xsim {icrctb_behav} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Start reading vector           1's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+ return_port = 57266   expected = 57266 
+
+Simulation ended after                 2725 cycles.
+
+Simulation completed with success
+
+Start reading vector           2's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+ return_port =  1852   expected =  1852 
+
+Simulation ended after                  172 cycles.
+
+Simulation completed with success
+
+No more values found. Simulation(s) executed:           2.
+
+$finish called at time : 29150 ns : File "/root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output/simulation/testbench_icrc.v" Line 275
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Apr 18 13:32:26 2024...

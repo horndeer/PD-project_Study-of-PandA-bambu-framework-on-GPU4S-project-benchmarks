@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<bambu_results bambu_args="/tmp/.mount_bambu-olMLYC/usr/bin/bambu --simulate --simulator=XSIM ../spec.c " bambu_version="Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main" timestamp="2024-04-17T17:30:07" benchmark_name="main_1">
+  <CYCLES value="2815"/>
+  <HLS_execution_time value="1.22000000000000000003"/>
+</bambu_results>

@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Wed Apr 17 17:29:56 2024
+# Process ID: 16881
+# Current directory: /root/PandA-bambu-2023.1/examples/crc/tutorial
+# Command line: xsim -mode tcl -source {xsim.dir/maintb_behav/xsim_script.tcl}
+# Log file: /root/PandA-bambu-2023.1/examples/crc/tutorial/xsim.log
+# Journal file: /root/PandA-bambu-2023.1/examples/crc/tutorial/xsim.jou
+# Running On: JACK, OS: Linux, CPU Frequency: 1995.379 MHz, CPU Physical cores: 4, Host memory: 4051 MB
+#-----------------------------------------------------------
+source xsim.dir/maintb_behav/xsim_script.tcl
+# xsim {maintb_behav} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Reading of vector values from input file completed. Simulation started.
+ return_port =          0   expected =          0 
+
+Simulation ended after                 2815 cycles.
+
+Simulation completed with success
+
+$finish called at time : 28280 ns : File "/root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output/simulation/testbench_main.v" Line 378
+exit
+INFO: [Common 17-206] Exiting xsim at Wed Apr 17 17:30:07 2024...

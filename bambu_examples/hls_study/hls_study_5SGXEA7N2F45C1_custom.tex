@@ -1,0 +1,80 @@
+%Generated at 2020-09-30 03:11:50.040659 with bambu Version: PandA 0.9.7-dev - Revision ff397ef878809a5ba28bb4963d75d392de7dde8d-PR-13
+\begin{tabular}{|l|c|HHc|c|c|c|cH|}
+\hline
+Benchmark                                       & Cycles       & Period                 & Slack     & Fmax       & Wall-clock              & ALMs       & Membits     & DSPs    & HLS Time(s) \\
+\hline
+Gsm\_LPC\_Analysis\_opt:Gsm\_LPC\_Analysis\_0   & $ 1954     $ & $ 4.884 \cdot 10^{0} $ & $ 0.12  $ & $ 204.75 $ & $ 9.543 \cdot 10^{0}  $ & $ 23075  $ & $ 512     $ & $ 99  $ & $ 763.35  $ \\
+Gsm\_LPC\_Analysis\_unopt:Gsm\_LPC\_Analysis\_0 & $ 2601     $ & $ 4.216 \cdot 10^{0} $ & $ -0.22 $ & $ 237.19 $ & $ 1.097 \cdot 10^{1}  $ & $ 7852   $ & $ 2688    $ & $ 78  $ & $ 116.48  $ \\
+adpcm\_encode\_opt:encode\_0                    & $ 4917     $ & $ 3.363 \cdot 10^{0} $ & $ -0.36 $ & $ 297.35 $ & $ 1.654 \cdot 10^{1}  $ & $ 4549   $ & $ 720     $ & $ 61  $ & $ 22.14   $ \\
+adpcm\_encode\_unopt:encode\_0                  & $ 8082     $ & $ 3.749 \cdot 10^{0} $ & $ 0.25  $ & $ 266.74 $ & $ 3.030 \cdot 10^{1}  $ & $ 3182   $ & $ 720     $ & $ 40  $ & $ 24.48   $ \\
+aes\_decrypt\_opt:main\_0                       & $ 2368     $ & $ 3.758 \cdot 10^{0} $ & $ 0.24  $ & $ 266.10 $ & $ 8.899 \cdot 10^{0}  $ & $ 6501   $ & $ 9216    $ & $ 2   $ & $ 156.07  $ \\
+aes\_decrypt\_unopt:main\_0                     & $ 2382     $ & $ 4.163 \cdot 10^{0} $ & $ -0.16 $ & $ 240.21 $ & $ 9.916 \cdot 10^{0}  $ & $ 5837   $ & $ 9216    $ & $ 2   $ & $ 80.60   $ \\
+aes\_encrypt\_opt:main\_0                       & $ 1706     $ & $ 3.547 \cdot 10^{0} $ & $ 0.45  $ & $ 281.93 $ & $ 6.051 \cdot 10^{0}  $ & $ 5911   $ & $ 1024    $ & $ 3   $ & $ 171.46  $ \\
+aes\_encrypt\_unopt:main\_0                     & $ 1699     $ & $ 3.678 \cdot 10^{0} $ & $ 0.32  $ & $ 271.89 $ & $ 6.249 \cdot 10^{0}  $ & $ 5097   $ & $ 1024    $ & $ 2   $ & $ 77.37   $ \\
+bellmanford\_opt:bellmanford\_0                 & $ 4779     $ & $ 1.930 \cdot 10^{0} $ & $ 0.07  $ & $ 518.13 $ & $ 9.223 \cdot 10^{0}  $ & $ 444    $ & $ 0       $ & $ 0   $ & $ 2.30    $ \\
+bellmanford\_unopt:bellmanford\_0               & $ 2928     $ & $ 3.636 \cdot 10^{0} $ & $ 0.36  $ & $ 275.03 $ & $ 1.065 \cdot 10^{1}  $ & $ 530    $ & $ 0       $ & $ 0   $ & $ 2.06    $ \\
+blowfish-BF\_cfb64\_encrypt\_opt:main\_0        & $ 78520    $ & $ 2.665 \cdot 10^{0} $ & $ 0.33  $ & $ 375.23 $ & $ 2.093 \cdot 10^{2}  $ & $ 1996   $ & $ 0       $ & $ 0   $ & $ 47.61   $ \\
+blowfish-BF\_cfb64\_encrypt\_unopt:main\_0      & $ 74620    $ & $ 3.543 \cdot 10^{0} $ & $ 0.46  $ & $ 282.25 $ & $ 2.644 \cdot 10^{2}  $ & $ 2126   $ & $ 0       $ & $ 0   $ & $ 44.38   $ \\
+float64\_add\_opt:float64\_add\_0               & $ 258      $ & $ 3.659 \cdot 10^{0} $ & $ 0.34  $ & $ 273.30 $ & $ 9.440 \cdot 10^{-1} $ & $ 2796   $ & $ 0       $ & $ 0   $ & $ 11.05   $ \\
+float64\_add\_unopt:float64\_add\_0             & $ 262      $ & $ 3.391 \cdot 10^{0} $ & $ 0.61  $ & $ 294.90 $ & $ 8.884 \cdot 10^{-1} $ & $ 3137   $ & $ 0       $ & $ 0   $ & $ 7.65    $ \\
+float64\_div\_opt:float64\_div\_0               & $ 846      $ & $ 4.397 \cdot 10^{0} $ & $ -0.40 $ & $ 227.43 $ & $ 3.720 \cdot 10^{0}  $ & $ 3626   $ & $ 0       $ & $ 38  $ & $ 8.87    $ \\
+float64\_div\_unopt:float64\_div\_0             & $ 1858     $ & $ 3.885 \cdot 10^{0} $ & $ 0.12  $ & $ 257.40 $ & $ 7.218 \cdot 10^{0}  $ & $ 2801   $ & $ 0       $ & $ 12  $ & $ 12.45   $ \\
+float64\_mul\_opt:float64\_mul\_0               & $ 110      $ & $ 3.613 \cdot 10^{0} $ & $ 0.39  $ & $ 276.78 $ & $ 3.974 \cdot 10^{-1} $ & $ 1345   $ & $ 0       $ & $ 7   $ & $ 5.53    $ \\
+float64\_mul\_unopt:float64\_mul\_0             & $ 118      $ & $ 3.657 \cdot 10^{0} $ & $ 0.34  $ & $ 273.45 $ & $ 4.315 \cdot 10^{-1} $ & $ 1351   $ & $ 0       $ & $ 7   $ & $ 5.67    $ \\
+jpeg2bmp\_main\_opt:jpeg2bmp\_main\_0           & $ 612236   $ & $ 3.930 \cdot 10^{0} $ & $ 0.07  $ & $ 254.45 $ & $ 2.406 \cdot 10^{3}  $ & $ 12991  $ & $ 441608  $ & $ 28  $ & $ 117.20  $ \\
+jpeg2bmp\_main\_unopt:jpeg2bmp\_main\_0         & $ 677022   $ & $ 3.848 \cdot 10^{0} $ & $ 0.15  $ & $ 259.88 $ & $ 2.605 \cdot 10^{3}  $ & $ 30258  $ & $ 473760  $ & $ 30  $ & $ 124.03  $ \\
+local\_sin\_opt:local\_sin\_0                   & $ 26013    $ & $ 4.126 \cdot 10^{0} $ & $ -0.13 $ & $ 242.37 $ & $ 1.073 \cdot 10^{2}  $ & $ 10910  $ & $ 0       $ & $ 54  $ & $ 228.28  $ \\
+local\_sin\_unopt:local\_sin\_0                 & $ 50644    $ & $ 4.057 \cdot 10^{0} $ & $ -0.06 $ & $ 246.49 $ & $ 2.055 \cdot 10^{2}  $ & $ 8724   $ & $ 0       $ & $ 28  $ & $ 97.36   $ \\
+mips\_call\_opt:main\_0                         & $ 8161     $ & $ 2.097 \cdot 10^{0} $ & $ 0.40  $ & $ 476.87 $ & $ 1.711 \cdot 10^{1}  $ & $ 1235   $ & $ 0       $ & $ 4   $ & $ 4.54    $ \\
+mips\_call\_unopt:main\_0                       & $ 5840     $ & $ 3.249 \cdot 10^{0} $ & $ 0.75  $ & $ 307.79 $ & $ 1.897 \cdot 10^{1}  $ & $ 1061   $ & $ 0       $ & $ 4   $ & $ 3.13    $ \\
+mm\_opt:mm\_0                                   & $ 5922     $ & $ 5.191 \cdot 10^{0} $ & $ -1.19 $ & $ 192.64 $ & $ 3.074 \cdot 10^{1}  $ & $ 1710   $ & $ 0       $ & $ 16  $ & $ 2.52    $ \\
+mm\_unopt:mm\_0                                 & $ 133154   $ & $ 2.678 \cdot 10^{0} $ & $ 1.32  $ & $ 373.41 $ & $ 3.566 \cdot 10^{2}  $ & $ 247    $ & $ 0       $ & $ 2   $ & $ 1.17    $ \\
+motion\_vectors\_opt:main\_0                    & $ 183      $ & $ 3.083 \cdot 10^{0} $ & $ 0.92  $ & $ 324.36 $ & $ 5.642 \cdot 10^{-1} $ & $ 605    $ & $ 448     $ & $ 0   $ & $ 5.12    $ \\
+motion\_vectors\_unopt:main\_0                  & $ 183      $ & $ 3.554 \cdot 10^{0} $ & $ 0.45  $ & $ 281.37 $ & $ 6.504 \cdot 10^{-1} $ & $ 931    $ & $ 448     $ & $ 0   $ & $ 6.37    $ \\
+satd\_opt:satd\_0                               & $ 33       $ & $ 2.318 \cdot 10^{0} $ & $ -0.12 $ & $ 431.41 $ & $ 7.649 \cdot 10^{-2} $ & $ 1216   $ & $ 512     $ & $ 0   $ & $ 4.02    $ \\
+satd\_unopt:satd\_0                             & $ 25       $ & $ 3.527 \cdot 10^{0} $ & $ 0.47  $ & $ 283.53 $ & $ 8.818 \cdot 10^{-2} $ & $ 1481   $ & $ 0       $ & $ 0   $ & $ 3.84    $ \\
+sha\_stream\_opt:main\_0                        & $ 60109    $ & $ 6.457 \cdot 10^{0} $ & $ -1.46 $ & $ 154.87 $ & $ 3.881 \cdot 10^{2}  $ & $ 8688   $ & $ 134144  $ & $ 0   $ & $ 30.61   $ \\
+sha\_stream\_unopt:main\_0                      & $ 138496   $ & $ 3.694 \cdot 10^{0} $ & $ 0.31  $ & $ 270.71 $ & $ 5.116 \cdot 10^{2}  $ & $ 4080   $ & $ 134144  $ & $ 0   $ & $ 11.82   $ \\
+sobel\_legup\_opt:sobel\_0                      & $ 3901502  $ & $ 1.661 \cdot 10^{0} $ & $ 0.34  $ & $ 602.05 $ & $ 6.480 \cdot 10^{3}  $ & $ 488    $ & $ 0       $ & $ 0   $ & $ 7.75    $ \\
+sobel\_unopt:sobel\_0                           & $ 5203533  $ & $ 3.583 \cdot 10^{0} $ & $ 0.42  $ & $ 279.10 $ & $ 1.864 \cdot 10^{4}  $ & $ 1488   $ & $ 0       $ & $ 8   $ & $ 6.99    $ \\
+\hline
+Average                                         & $          $ & $ 3.611 \cdot 10^{0} $ & $ 0.17  $ & $ 297.10 $ & $                     $ & $        $ & $         $ & $     $ & $         $ \\
+\hline
+Overall                                         & $ 11013064 $ & $                    $ & $       $ & $        $ & $ 3.238 \cdot 10^{4}  $ & $ 168269 $ & $ 1210184 $ & $ 525 $ & $ 2214.27 $ \\
+\hline
+\end{tabular}
+%Benchmarks:
+%adpcm_encode/not-optimized/adpcm.c --benchmark-name=adpcm_encode_unopt --generate-tb=BENCHMARKS_ROOT/adpcm_encode/not-optimized/encode.xml -DINITIALIZATIONS --clock-period=4 --top-fname=encode
+%adpcm_encode/optimized/adpcm.c --benchmark-name=adpcm_encode_opt --generate-tb=BENCHMARKS_ROOT/adpcm_encode/optimized/encode.xml -DINITIALIZATIONS --clock-period=3 --top-fname=encode --do-not-expose-globals --initial-internal-address=0 --aligned-access -fno-tree-vectorize --param=max-completely-peeled-insns=110 --param=max-completely-peel-times=31
+%aes_decrypt/not-optimized/aes.c --benchmark-name=aes_decrypt_unopt --generate-tb=BENCHMARKS_ROOT/aes_decrypt/not-optimized/decrypt.xml --clock-period=4 --top-fname=main --top-rtldesign-name=decrypt
+%aes_decrypt/optimized/aes.c --benchmark-name=aes_decrypt_opt --generate-tb=BENCHMARKS_ROOT/aes_decrypt/optimized/decrypt.xml --clock-period=4 --top-fname=main --top-rtldesign-name=decrypt -finline-limit=10000 --aligned-access -fno-tree-vectorize
+%aes_encrypt/not-optimized/aes.c --benchmark-name=aes_encrypt_unopt --generate-tb=BENCHMARKS_ROOT/aes_encrypt/not-optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=encrypt
+%aes_encrypt/optimized/aes.c --benchmark-name=aes_encrypt_opt --generate-tb=BENCHMARKS_ROOT/aes_encrypt/optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=encrypt -finline-limit=10000 --aligned-access -fno-tree-vectorize
+%bellmanford/not-optimized/bellmanford.c --benchmark-name=bellmanford_unopt --generate-tb=BENCHMARKS_ROOT/bellmanford/not-optimized/test_ext_dataset.xml --clock-period=4 --top-fname=bellmanford
+%bellmanford/optimized/bellmanford.c --benchmark-name=bellmanford_opt --generate-tb=BENCHMARKS_ROOT/bellmanford/optimized/test_ext_dataset.xml --clock-period=2 --top-fname=bellmanford --base-address=0 --addr-bus-bitsize=9
+%blowfish-BF_cfb64_encrypt/not-optimized/bf.c --benchmark-name=blowfish-BF_cfb64_encrypt_unopt --generate-tb=BENCHMARKS_ROOT/blowfish-BF_cfb64_encrypt/not-optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=BF_cfb64_encrypt
+%blowfish-BF_cfb64_encrypt/optimized/bf.c --benchmark-name=blowfish-BF_cfb64_encrypt_opt --generate-tb=BENCHMARKS_ROOT/blowfish-BF_cfb64_encrypt/optimized/main.xml --clock-period=3 --top-fname=main --top-rtldesign-name=BF_cfb64_encrypt --initial-internal-address=0 --aligned-access -fno-tree-vectorize
+%dfadd/not-optimized/dfadd.c --benchmark-name=float64_add_unopt --generate-tb=BENCHMARKS_ROOT/dfadd/not-optimized/float64_add.xml --clock-period=4 --top-fname=float64_add
+%dfadd/optimized/dfadd.c --benchmark-name=float64_add_opt --generate-tb=BENCHMARKS_ROOT/dfadd/optimized/float64_add.xml --clock-period=4 --top-fname=float64_add --initial-internal-address=0 --do-not-expose-globals -finline-limit=10000 --param=early-inlining-insns=100 --timing-model=SIMPLE
+%dfdiv/not-optimized/dfdiv.c --benchmark-name=float64_div_unopt --generate-tb=BENCHMARKS_ROOT/dfdiv/not-optimized/float64_div.xml --clock-period=4 --top-fname=float64_div
+%dfdiv/optimized/dfdiv.c --benchmark-name=float64_div_opt --generate-tb=BENCHMARKS_ROOT/dfdiv/optimized/float64_div.xml --clock-period=4 --top-fname=float64_div --initial-internal-address=0 --hls-div --do-not-expose-globals
+%dfmul/not-optimized/dfmul.c --benchmark-name=float64_mul_unopt --generate-tb=BENCHMARKS_ROOT/dfmul/not-optimized/float64_mul.xml --clock-period=4 --top-fname=float64_mul
+%dfmul/optimized/dfmul.c --benchmark-name=float64_mul_opt --generate-tb=BENCHMARKS_ROOT/dfmul/optimized/float64_mul.xml --clock-period=4 --top-fname=float64_mul --initial-internal-address=0 --do-not-expose-globals --timing-model=SIMPLE
+%dfsin/not-optimized/dfsin.c --benchmark-name=local_sin_unopt --generate-tb=BENCHMARKS_ROOT/dfsin/not-optimized/local_sin.xml --clock-period=4 --top-fname=local_sin
+%dfsin/optimized/dfsin.c --benchmark-name=local_sin_opt --generate-tb=BENCHMARKS_ROOT/dfsin/optimized/local_sin.xml --clock-period=4 --top-fname=local_sin --initial-internal-address=0 --hls-div --do-not-expose-globals --param=early-inlining-insns=1000
+%gsm/not-optimized/gsm.c --benchmark-name=Gsm_LPC_Analysis_unopt --generate-tb=BENCHMARKS_ROOT/gsm/not-optimized/Gsm_LPC_Analysis.xml --clock-period=4 --top-fname=Gsm_LPC_Analysis
+%gsm/optimized/gsm.c gsm_constraints.xml --benchmark-name=Gsm_LPC_Analysis_opt --generate-tb=BENCHMARKS_ROOT/gsm/optimized/Gsm_LPC_Analysis.xml --clock-period=5 --top-fname=Gsm_LPC_Analysis --do-not-expose-globals -ftree-vectorize -finline-limit=10000 --skip-pipe-parameter=1
+%jpeg/not-optimized/main.c --benchmark-name=jpeg2bmp_main_unopt --generate-tb=BENCHMARKS_ROOT/jpeg/not-optimized/jpeg2bmp_main.xml --clock-period=4 --top-fname=jpeg2bmp_main
+%jpeg/optimized/main.c --benchmark-name=jpeg2bmp_main_opt --generate-tb=BENCHMARKS_ROOT/jpeg/not-optimized/jpeg2bmp_main.xml --clock-period=4 --top-fname=jpeg2bmp_main --do-not-expose-globals --initial-internal-address=0 --aligned-access -fno-tree-vectorize
+%mips/not-optimized/mips.c --benchmark-name=mips_call_unopt --generate-tb=BENCHMARKS_ROOT/mips/not-optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=mips_call
+%mips/optimized/mips.c --benchmark-name=mips_call_opt --generate-tb=BENCHMARKS_ROOT/mips/optimized/main.xml --clock-period=2.5 --top-fname=main --top-rtldesign-name=mips_call --initial-internal-address=0 --do-not-expose-globals --aligned-access -fno-tree-vectorize
+%mm/not-optimized/module.c --benchmark-name=mm_unopt --generate-tb=BENCHMARKS_ROOT/mm/not-optimized/test.xml --clock-period=4 --top-fname=mm
+%mm/optimized/module.c mm_constraints.xml --benchmark-name=mm_opt --generate-tb=BENCHMARKS_ROOT/mm/optimized/test.xml --clock-period=4 --top-fname=mm -ftree-vectorize --param=max-completely-peeled-insns=110 --param=max-completely-peel-times=31 --base-address=0 --addr-bus-bitsize=14
+%motion/not-optimized/mpeg2.c --benchmark-name=motion_vectors_unopt --generate-tb=BENCHMARKS_ROOT/motion/not-optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=motion_vectors
+%motion/optimized/mpeg2.c --benchmark-name=motion_vectors_opt --generate-tb=BENCHMARKS_ROOT/motion/optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=motion_vectors --initial-internal-address=0 --aligned-access -fno-tree-vectorize
+%satd/not-optimized/main.c --benchmark-name=satd_unopt --generate-tb=BENCHMARKS_ROOT/satd/not-optimized/test.xml --clock-period=4 --top-fname=satd --generate-interface=INFER
+%satd/optimized/main.c --benchmark-name=satd_opt --generate-tb=BENCHMARKS_ROOT/satd/optimized/test.xml --clock-period=2.2 --top-fname=satd --base-address=0 --addr-bus-bitsize=6 --do-not-use-asynchronous-memories --generate-interface=INFER
+%sha/not-optimized/sha_driver.c --benchmark-name=sha_stream_unopt --generate-tb=BENCHMARKS_ROOT/sha/not-optimized/main.xml --clock-period=4 --top-fname=main --top-rtldesign-name=sha_stream
+%sha/optimized/sha_driver.c --benchmark-name=sha_stream_opt --generate-tb=BENCHMARKS_ROOT/sha/optimized/main.xml --clock-period=5 --top-fname=main --top-rtldesign-name=sha_stream --initial-internal-address=0 --base-address=0 --aligned-access -fno-tree-vectorize --param=max-completely-peeled-insns=200 --param=max-completely-peel-times=31
+%sobel/not-optimized/sobel.c --benchmark-name=sobel_unopt --generate-tb=BENCHMARKS_ROOT/sobel/not-optimized/test.xml --std=c99 --clock-period=4 --top-fname=sobel
+%sobel/sobel-legup2/sobel.c --benchmark-name=sobel_legup_opt --generate-tb=BENCHMARKS_ROOT/sobel/sobel-legup2/test.xml --std=c99 --clock-period=2 --top-fname=sobel --base-address=0 --addr-bus-bitsize=20

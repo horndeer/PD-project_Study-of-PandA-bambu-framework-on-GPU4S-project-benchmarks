@@ -1,0 +1,1 @@
+--debug "off" -L "work" -L "unifast_ver" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "icrctb_behav" --prj "/root/PandA-bambu-2023.1/examples/crc/tutorial/HLS_output//xsim_beh/icrc.prj" "work.icrc_tb_top" -O3 -nolog -stat -R 

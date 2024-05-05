@@ -14,6 +14,8 @@ Repository is organised as follow:
 
 ## Links
 
+Drive folder with analysis : https://drive.google.com/drive/folders/1MNWOZn1yHtZia8zN1w23LO-vgAu3y2ZA?usp=sharing
+
 GPU4S repo : https://github.com/OBPMark/GPU4S_Bench.git
 
 GPU4S paper : https://www.ac.upc.edu/app/research-reports/public/html/research_center_index-CAP-2019,en.html

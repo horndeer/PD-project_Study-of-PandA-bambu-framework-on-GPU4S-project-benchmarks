@@ -1,0 +1,7 @@
+Running: xsim.dir/mmtb_behav/xsimk -runall -simmode gui -wdb mmtb_behav.wdb -simrunnum 0 -socket 38591
+Design successfully loaded
+Design Loading Memory Usage: 33008 KB (Peak: 33016 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 102904 KB (Peak: 295156 KB)
+Simulation CPU Usage: 540 ms

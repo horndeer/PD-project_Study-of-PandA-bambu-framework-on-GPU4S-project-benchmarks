@@ -17,7 +17,7 @@ typedef float bench_t;
 #elif DOUBLE 
 typedef double bench_t;
 #else
-
+typedef double bench_t;
 #endif
 
 #ifdef BIGENDIAN

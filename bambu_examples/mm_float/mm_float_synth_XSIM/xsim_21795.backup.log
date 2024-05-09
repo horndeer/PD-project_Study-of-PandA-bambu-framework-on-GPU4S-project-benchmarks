@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon May  6 20:06:48 2024
+# Process ID: 21795
+# Current directory: /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM
+# Command line: xsim -mode tcl -source {xsim.dir/mmtb_behav/xsim_script.tcl}
+# Log file: /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/xsim.log
+# Journal file: /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/xsim.jou
+# Running On: JACK, OS: Linux, CPU Frequency: 1995.384 MHz, CPU Physical cores: 4, Host memory: 4053 MB
+#-----------------------------------------------------------
+source xsim.dir/mmtb_behav/xsim_script.tcl
+# xsim {mmtb_behav} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Start reading vector           1's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+Simulation ended after                25633 cycles.
+
+Simulation completed with success
+
+$finish called at time : 38554500 ps : File "/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output/simulation/testbench_mm.v" Line 1216
+exit
+INFO: [Common 17-206] Exiting xsim at Mon May  6 20:06:52 2024...

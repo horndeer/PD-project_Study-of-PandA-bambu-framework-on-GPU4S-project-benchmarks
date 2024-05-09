@@ -1,0 +1,250 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date         : Mon May  6 19:08:57 2024
+| Host         : JACK running 64-bit Ubuntu 18.04.6 LTS
+| Command      : report_utilization -hierarchical -file /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow_0/post_synth_util_hier.rpt
+| Design       : mm
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Synthesized
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++-----------------------------------------------------+-----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|                       Instance                      |                  Module                 | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++-----------------------------------------------------+-----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| mm                                                  |                                   (top) |       1875 |       1875 |       0 |    0 | 1268 |      0 |      0 |          9 |
+|   (mm)                                              |                                   (top) |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|   _mm_i0                                            |                                     _mm |       1875 |       1875 |       0 |    0 | 1268 |      0 |      0 |          9 |
+|     Controller_i                                    |                           controller_mm |        138 |        138 |       0 |    0 |   21 |      0 |      0 |          0 |
+|     Datapath_i                                      |                             datapath_mm |       1737 |       1737 |       0 |    0 | 1246 |      0 |      0 |          9 |
+|       MUX_717_reg_1_0_0_0                           |                                MUX_GATE |         16 |         16 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       MUX_757_reg_135_0_0_0                         |                              MUX_GATE_0 |         13 |         13 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       MUX_761_reg_16_0_1_0                          |                              MUX_GATE_1 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       MUX_762_reg_17_0_0_0                          |                              MUX_GATE_2 |         16 |         16 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       MUX_763_reg_18_0_0_0                          |                              MUX_GATE_3 |         16 |         16 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       MUX_84___float32_to_float64_ieee_564_i0_0_0_0 |                              MUX_GATE_4 |         12 |         12 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       __float32_to_float64_ieee_564_i0              |               __float32_to_float64_ieee |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          0 |
+|         Datapath_i                                  |  datapath___float32_to_float64_ieee_135 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          0 |
+|           fu___float32_to_float64_ieee_22829_37735  |                     ui_cond_expr_FU_136 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_33831                             |             __float32_to_float64_ieee_5 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|         Datapath_i                                  |      datapath___float32_to_float64_ieee |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|           fu___float32_to_float64_ieee_22829_37735  |                         ui_cond_expr_FU |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_33874                             |                 ui_pointer_plus_expr_FU |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_33955                             |            plus_expr_FU__parameterized0 |         14 |         14 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34003                             |               ui_pointer_plus_expr_FU_6 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34012                             |           ui_ne_expr_FU__parameterized0 |          7 |          7 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34014                             |           ui_ne_expr_FU__parameterized1 |         11 |         11 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34016                             |           ui_ne_expr_FU__parameterized2 |         10 |         10 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34018                             |         ui_ne_expr_FU__parameterized0_7 |          7 |          7 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34020                             |                              ne_expr_FU |         11 |         11 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_34022                             |         ui_ne_expr_FU__parameterized0_8 |          7 |          7 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37421                             |                         ui_plus_expr_FU |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37440                             |         ui_plus_expr_FU__parameterized0 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37453                             |                       ui_plus_expr_FU_9 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37470                             |      ui_plus_expr_FU__parameterized0_10 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37487                             |      ui_plus_expr_FU__parameterized0_11 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_37502                             |      ui_plus_expr_FU__parameterized0_12 |         30 |         30 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42432                             |                           ui_eq_expr_FU |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42438                             |           ui_eq_expr_FU__parameterized1 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42441                             |           ui_ne_expr_FU__parameterized3 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42450                             |                        ui_eq_expr_FU_13 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42456                             |        ui_eq_expr_FU__parameterized1_14 |          5 |          5 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42539                             |                 ui_ternary_plus_expr_FU |          9 |          9 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42578                             |                         ui_mult_expr_FU |         47 |         47 |       0 |    0 |    0 |      0 |      0 |          3 |
+|       fu_mm_33779_42587                             |         ui_mult_expr_FU__parameterized0 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          1 |
+|       fu_mm_33779_42590                             |         ui_plus_expr_FU__parameterized1 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42599                             |         ui_mult_expr_FU__parameterized1 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          1 |
+|       fu_mm_33779_42602                             |         ui_plus_expr_FU__parameterized2 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42608                             |         ui_mult_expr_FU__parameterized2 |         10 |         10 |       0 |    0 |    0 |      0 |      0 |          2 |
+|       fu_mm_33779_42611                             | ui_ternary_plus_expr_FU__parameterized0 |         23 |         23 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42671                             |      ui_lshift_expr_FU__parameterized15 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42689                             |      ui_lshift_expr_FU__parameterized16 |         25 |         25 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42716                             |           ui_ne_expr_FU__parameterized4 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42725                             |             lut_expr_FU__parameterized3 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42731                             |         ui_plus_expr_FU__parameterized4 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42734                             |           ui_eq_expr_FU__parameterized2 |         21 |         21 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42743                             |                        ui_eq_expr_FU_15 |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42794                             |             lut_expr_FU__parameterized6 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42806                             |          lut_expr_FU__parameterized6_16 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42824                             |             lut_expr_FU__parameterized7 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42842                             |             lut_expr_FU__parameterized8 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42854                             |         ui_cond_expr_FU__parameterized3 |         38 |         38 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42873                             |                           ui_lt_expr_FU |         50 |         50 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42888                             |     ui_bit_and_expr_FU__parameterized21 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42894                             |  ui_bit_and_expr_FU__parameterized21_17 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42897                             |      ui_bit_ior_expr_FU__parameterized8 |         20 |         20 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42900                             |  ui_bit_and_expr_FU__parameterized21_18 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42903                             |  ui_bit_and_expr_FU__parameterized21_19 |         10 |         10 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42906                             |   ui_bit_ior_expr_FU__parameterized8_20 |         33 |         33 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42962                             |        ui_ne_expr_FU__parameterized3_21 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42965                             |        ui_ne_expr_FU__parameterized3_22 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42968                             |                        ui_eq_expr_FU_23 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42971                             |                        ui_eq_expr_FU_24 |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_42980                             |                        ui_minus_expr_FU |        107 |        107 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43052                             |      ui_lshift_expr_FU__parameterized22 |         10 |         10 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43073                             |        ui_ne_expr_FU__parameterized4_25 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43076                             |      ui_rshift_expr_FU__parameterized21 |         96 |         96 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43094                             |         ui_plus_expr_FU__parameterized5 |         50 |         50 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43145                             |                        ui_eq_expr_FU_26 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43181                             |           ui_eq_expr_FU__parameterized4 |          9 |          9 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43196                             |         ui_cond_expr_FU__parameterized6 |         23 |         23 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43337                             |         ui_cond_expr_FU__parameterized7 |         47 |         47 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43451                             |          lut_expr_FU__parameterized6_27 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43502                             |      ui_cond_expr_FU__parameterized7_28 |         51 |         51 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43667                             |         ui_cond_expr_FU__parameterized8 |         52 |         52 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43681                             |           ui_lt_expr_FU__parameterized0 |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43693                             |                   ui_ternary_pm_expr_FU |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43792                             |          lut_expr_FU__parameterized6_29 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43849                             |          lut_expr_FU__parameterized6_30 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43861                             |            lut_expr_FU__parameterized10 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43905                             |              eq_expr_FU__parameterized0 |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43917                             |           ui_ne_expr_FU__parameterized5 |          7 |          7 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43956                             |                              gt_expr_FU |          5 |          5 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_43959                             |              eq_expr_FU__parameterized1 |          5 |          5 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44001                             |        ui_ne_expr_FU__parameterized3_31 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44047                             |                           ui_gt_expr_FU |         15 |         15 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44050                             |         ui_plus_expr_FU__parameterized8 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44104                             |            lut_expr_FU__parameterized14 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44110                             |          lut_expr_FU__parameterized6_32 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44129                             |      ui_plus_expr_FU__parameterized8_33 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44216                             |         ui_plus_expr_FU__parameterized9 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44717                             |            lut_expr_FU__parameterized16 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44720                             |         lut_expr_FU__parameterized10_34 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44739                             |          lut_expr_FU__parameterized6_35 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44746                             |          lut_expr_FU__parameterized3_36 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44771                             |          lut_expr_FU__parameterized6_37 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44788                             |         lut_expr_FU__parameterized10_38 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44792                             |          lut_expr_FU__parameterized6_39 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44801                             |         lut_expr_FU__parameterized10_40 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44804                             |          lut_expr_FU__parameterized6_41 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44818                             |            lut_expr_FU__parameterized18 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44824                             |         lut_expr_FU__parameterized18_42 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44830                             |          lut_expr_FU__parameterized6_43 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44833                             |         lut_expr_FU__parameterized18_44 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44839                             |         lut_expr_FU__parameterized18_45 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44845                             |          lut_expr_FU__parameterized6_46 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44849                             |         lut_expr_FU__parameterized10_47 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44855                             |         lut_expr_FU__parameterized10_48 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44862                             |          lut_expr_FU__parameterized6_49 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44865                             |         lut_expr_FU__parameterized10_50 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44871                             |         lut_expr_FU__parameterized10_51 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44877                             |          lut_expr_FU__parameterized6_52 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       fu_mm_33779_44933                             |            lut_expr_FU__parameterized20 |          1 |          1 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       reg_0                                         |                             register_SE |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_1                                         |                          register_SE_53 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_100                                       |                            register_STD |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_101                                       |                         register_STD_54 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_102                                       |                         register_STD_55 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_103                                       |                         register_STD_56 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_104                                       |                         register_STD_57 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_105                                       |                         register_STD_58 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_106                                       |                         register_STD_59 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_107                                       |                         register_STD_60 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_109                                       |                         register_STD_61 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_11                                        |             register_SE__parameterized0 |          0 |          0 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       reg_111                                       |            register_STD__parameterized0 |          7 |          7 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       reg_112                                       |                         register_STD_62 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_113                                       |                         register_STD_63 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_114                                       |            register_STD__parameterized1 |          6 |          6 |       0 |    0 |   12 |      0 |      0 |          0 |
+|       reg_115                                       |                          register_SE_64 |         14 |         14 |       0 |    0 |   12 |      0 |      0 |          0 |
+|       reg_116                                       |                          register_SE_65 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_117                                       |                          register_SE_66 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_119                                       |            register_STD__parameterized2 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_12                                        |                          register_SE_67 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_121                                       |                         register_STD_68 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_122                                       |                         register_STD_69 |         23 |         23 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_123                                       |                         register_STD_70 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_124                                       |         register_STD__parameterized1_71 |          0 |          0 |       0 |    0 |    9 |      0 |      0 |          0 |
+|       reg_125                                       |             register_SE__parameterized1 |          2 |          2 |       0 |    0 |    7 |      0 |      0 |          0 |
+|       reg_126                                       |                         register_STD_72 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_127                                       |                         register_STD_73 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_128                                       |                         register_STD_74 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_129                                       |            register_STD__parameterized3 |          1 |          1 |       0 |    0 |   25 |      0 |      0 |          0 |
+|       reg_13                                        |                          register_SE_75 |          0 |          0 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       reg_132                                       |          register_SE__parameterized1_76 |          5 |          5 |       0 |    0 |    7 |      0 |      0 |          0 |
+|       reg_133                                       |             register_SE__parameterized2 |          6 |          6 |       0 |    0 |    9 |      0 |      0 |          0 |
+|       reg_134                                       |         register_STD__parameterized3_77 |          0 |          0 |       0 |    0 |   25 |      0 |      0 |          0 |
+|       reg_135                                       |                          register_SE_78 |          8 |          8 |       0 |    0 |   25 |      0 |      0 |          0 |
+|       reg_136                                       |                          register_SE_79 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_14                                        |                          register_SE_80 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_15                                        |                          register_SE_81 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_16                                        |                          register_SE_82 |         67 |         67 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_17                                        |                          register_SE_83 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_18                                        |                          register_SE_84 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_19                                        |                          register_SE_85 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_2                                         |                          register_SE_86 |         63 |         63 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_20                                        |          register_SE__parameterized0_87 |          0 |          0 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       reg_21                                        |             register_SE__parameterized3 |          8 |          8 |       0 |    0 |   33 |      0 |      0 |          0 |
+|       reg_23                                        |          register_SE__parameterized3_88 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_28                                        |          register_SE__parameterized2_89 |          0 |          0 |       0 |    0 |   13 |      0 |      0 |          0 |
+|       reg_3                                         |                          register_SE_90 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_35                                        |             register_SE__parameterized5 |         34 |         34 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_36                                        |          register_SE__parameterized5_91 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_37                                        |          register_SE__parameterized5_92 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_38                                        |          register_SE__parameterized3_93 |         18 |         18 |       0 |    0 |    3 |      0 |      0 |          0 |
+|       reg_4                                         |          register_SE__parameterized5_94 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_43                                        |          register_SE__parameterized5_95 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_44                                        |          register_SE__parameterized5_96 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_45                                        |         register_STD__parameterized2_97 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_46                                        |            register_STD__parameterized5 |          0 |          0 |       0 |    0 |   17 |      0 |      0 |          1 |
+|       reg_47                                        |         register_STD__parameterized5_98 |          0 |          0 |       0 |    0 |   17 |      0 |      0 |          1 |
+|       reg_48                                        |             register_SE__parameterized6 |          0 |          0 |       0 |    0 |   17 |      0 |      0 |          0 |
+|       reg_49                                        |         register_STD__parameterized2_99 |          0 |          0 |       0 |    0 |   16 |      0 |      0 |          0 |
+|       reg_5                                         |         register_SE__parameterized5_100 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_50                                        |            register_STD__parameterized6 |          0 |          0 |       0 |    0 |   22 |      0 |      0 |          0 |
+|       reg_51                                        |            register_STD__parameterized4 |          0 |          0 |       0 |    0 |   21 |      0 |      0 |          0 |
+|       reg_52                                        |            register_STD__parameterized7 |          1 |          1 |       0 |    0 |   10 |      0 |      0 |          0 |
+|       reg_53                                        |            register_STD__parameterized8 |         13 |         13 |       0 |    0 |   37 |      0 |      0 |          0 |
+|       reg_54                                        |            register_STD__parameterized9 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_55                                        |           register_STD__parameterized10 |          0 |          0 |       0 |    0 |   64 |      0 |      0 |          0 |
+|       reg_56                                        |                        register_STD_101 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_57                                        |                        register_STD_102 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_58                                        |       register_STD__parameterized10_103 |         88 |         88 |       0 |    0 |   64 |      0 |      0 |          0 |
+|       reg_59                                        |       register_STD__parameterized10_104 |         14 |         14 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_6                                         |                         register_SE_105 |          0 |          0 |       0 |    0 |   32 |      0 |      0 |          0 |
+|       reg_60                                        |       register_STD__parameterized10_106 |         10 |         10 |       0 |    0 |    3 |      0 |      0 |          0 |
+|       reg_61                                        |             register_SE__parameterized7 |         18 |         18 |       0 |    0 |   11 |      0 |      0 |          0 |
+|       reg_62                                        |         register_SE__parameterized5_107 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_63                                        |         register_SE__parameterized5_108 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_64                                        |         register_SE__parameterized5_109 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_65                                        |           register_STD__parameterized11 |         32 |         32 |       0 |    0 |   54 |      0 |      0 |          0 |
+|       reg_66                                        |        register_STD__parameterized9_110 |          1 |          1 |       0 |    0 |    2 |      0 |      0 |          0 |
+|       reg_67                                        |                        register_STD_111 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_68                                        |         register_SE__parameterized5_112 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_69                                        |         register_SE__parameterized5_113 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_70                                        |         register_SE__parameterized5_114 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_71                                        |         register_SE__parameterized5_115 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_72                                        |         register_SE__parameterized5_116 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_73                                        |         register_SE__parameterized5_117 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_74                                        |             register_SE__parameterized8 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_76                                        |         register_SE__parameterized5_118 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_77                                        |                        register_STD_119 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_78                                        |                        register_STD_120 |          4 |          4 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_79                                        |                        register_STD_121 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_8                                         |         register_SE__parameterized0_122 |          0 |          0 |       0 |    0 |   30 |      0 |      0 |          0 |
+|       reg_80                                        |        register_STD__parameterized8_123 |         17 |         17 |       0 |    0 |   55 |      0 |      0 |          0 |
+|       reg_81                                        |                        register_STD_124 |          1 |          1 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_89                                        |                        register_STD_125 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_91                                        |                        register_STD_126 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_92                                        |                        register_STD_127 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_93                                        |                        register_STD_128 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_94                                        |                        register_STD_129 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_95                                        |                        register_STD_130 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_96                                        |                        register_STD_131 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_97                                        |                        register_STD_132 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_98                                        |                        register_STD_133 |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       reg_99                                        |                        register_STD_134 |         21 |         21 |       0 |    0 |    1 |      0 |      0 |          0 |
+|     done_delayed_REG                                |                             flipflop_AR |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
++-----------------------------------------------------+-----------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+
+

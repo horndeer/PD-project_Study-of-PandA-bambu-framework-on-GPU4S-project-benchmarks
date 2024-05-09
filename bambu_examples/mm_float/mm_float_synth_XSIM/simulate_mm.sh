@@ -5,10 +5,11 @@
 
 # Simulation script for COMPONENT: mm
 
-cd /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM
-#configuration
-. /opt/Xilinx/Vivado/2023.2/settings64.sh >& /dev/null;
+cd /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM
+#IVERILOG
+iverilog /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/mm.v /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//simulation/testbench_mm.v -g2012 -gstrict-ca-eval -o /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/a.out -v >& /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//icarus_beh/mm_icarus.log
 
-xelab --debug off -L work -L unifast_ver -L unisims_ver -L unimacro_ver -L secureip --snapshot mmtb_behav --prj /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//xsim_beh/mm.prj work.mm_tb_top -O3 -nolog -stat -R 2>&1 | tee /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//xsim_beh/mm_xsim.log
+#VVP
+vvp /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/a.out  2>&1 | tee -a /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//icarus_beh/mm_icarus.log
 
 

@@ -1,0 +1,1 @@
+--debug "off" -L "work" -L "unifast_ver" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "mmtb_behav" --prj "/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//xsim_beh/mm.prj" "work.mm_tb_top" -O3 -nolog -stat -R 

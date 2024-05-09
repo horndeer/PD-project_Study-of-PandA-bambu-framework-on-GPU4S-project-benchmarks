@@ -151,33 +151,33 @@ module mm_tb(clock);
   reg [31:0] A_ROWS;
   reg [31:0] A_COLS;
   reg [31:0] B_COLS;
-  wire [63:0] M_Rdata_ram;
-  wire [1:0] M_DataRdy;
+  wire [255:0] M_Rdata_ram;
+  wire [7:0] M_DataRdy;
   
   reg start_next_sim;
   // OUTPUT SIGNALS
   wire done_port;
-  wire [1:0] Mout_oe_ram;
-  wire [1:0] Mout_we_ram;
-  wire [63:0] Mout_addr_ram;
-  wire [63:0] Mout_Wdata_ram;
-  wire [11:0] Mout_data_ram_size;
+  wire [7:0] Mout_oe_ram;
+  wire [7:0] Mout_we_ram;
+  wire [255:0] Mout_addr_ram;
+  wire [255:0] Mout_Wdata_ram;
+  wire [47:0] Mout_data_ram_size;
   
-  reg signed [31:0] reg_DataReady[1:0];
-  reg [63:0] mask;
-  reg [63:0] M_Rdata_ram_temp;
-  reg [1:0] M_DataRdy_temp;
+  reg signed [31:0] reg_DataReady[7:0];
+  reg [255:0] mask;
+  reg [255:0] M_Rdata_ram_temp;
+  reg [7:0] M_DataRdy_temp;
   
-  reg [2*`MEM_DELAY_READ-1:0] Mout_oe_ram_queue_next;
-  reg [2*`MEM_DELAY_READ-1:0] Mout_oe_ram_queue_curr;
-  reg [2*`MEM_DELAY_WRITE-1:0] Mout_we_ram_queue_next;
-  reg [2*`MEM_DELAY_WRITE-1:0] Mout_we_ram_queue_curr;
-  reg [64*`MEM_MAX_DELAY-1:0] Mout_addr_ram_queue_next;
-  reg [64*`MEM_MAX_DELAY-1:0] Mout_addr_ram_queue_curr;
-  reg [64*`MEM_DELAY_WRITE-1:0] Mout_Wdata_ram_queue_next;
-  reg [64*`MEM_DELAY_WRITE-1:0] Mout_Wdata_ram_queue_curr;
-  reg [12*`MEM_MAX_DELAY-1:0] Mout_data_ram_size_queue_next;
-  reg [12*`MEM_MAX_DELAY-1:0] Mout_data_ram_size_queue_curr;
+  reg [8*`MEM_DELAY_READ-1:0] Mout_oe_ram_queue_next;
+  reg [8*`MEM_DELAY_READ-1:0] Mout_oe_ram_queue_curr;
+  reg [8*`MEM_DELAY_WRITE-1:0] Mout_we_ram_queue_next;
+  reg [8*`MEM_DELAY_WRITE-1:0] Mout_we_ram_queue_curr;
+  reg [256*`MEM_MAX_DELAY-1:0] Mout_addr_ram_queue_next;
+  reg [256*`MEM_MAX_DELAY-1:0] Mout_addr_ram_queue_curr;
+  reg [256*`MEM_DELAY_WRITE-1:0] Mout_Wdata_ram_queue_next;
+  reg [256*`MEM_DELAY_WRITE-1:0] Mout_Wdata_ram_queue_curr;
+  reg [48*`MEM_MAX_DELAY-1:0] Mout_data_ram_size_queue_next;
+  reg [48*`MEM_MAX_DELAY-1:0] Mout_data_ram_size_queue_curr;
   //initialization of memory queue signals
   initial
   begin
@@ -196,9 +196,6 @@ module mm_tb(clock);
     base_addr = 0;
   end
   
-  wire [63:0] M_Rdata_ram_delayed_temporary;
-  reg [63:0] M_Rdata_ram_delayed [`MEM_DELAY_READ-2:0];
-  
   // MODULE INSTANTIATION AND PORTS BINDING
   mm mm (.clock(clock), .reset(reset), .start_port(start_port), .in_a(in_a), .in_b(in_b), .out_c(out_c), .A_ROWS(A_ROWS), .A_COLS(A_COLS), .B_COLS(B_COLS), .M_Rdata_ram(M_Rdata_ram), .M_DataRdy(M_DataRdy), .done_port(done_port), .Mout_oe_ram(Mout_oe_ram), .Mout_we_ram(Mout_we_ram), .Mout_addr_ram(Mout_addr_ram), .Mout_Wdata_ram(Mout_Wdata_ram), .Mout_data_ram_size(Mout_data_ram_size));
   
@@ -206,7 +203,7 @@ module mm_tb(clock);
   initial
   begin
     // OPEN FILE WITH VALUES FOR SIMULATION
-    file = $fopen("/root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//simulation/values.txt","r");
+    file = $fopen("/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//simulation/values.txt","r");
     // Error in file open
     if (file == `NULL)
     begin
@@ -214,7 +211,7 @@ module mm_tb(clock);
       $finish;// Terminate
           end
     // OPEN FILE WHERE results will be written
-    res_file = $fopen("/root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/results.txt","w");
+    res_file = $fopen("/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/results.txt","w");
     
     // Error in file open
     if (res_file == `NULL)
@@ -253,6 +250,18 @@ module mm_tb(clock);
     reg_DataReady[0] = 0;
     
     reg_DataReady[1] = 0;
+    
+    reg_DataReady[2] = 0;
+    
+    reg_DataReady[3] = 0;
+    
+    reg_DataReady[4] = 0;
+    
+    reg_DataReady[5] = 0;
+    
+    reg_DataReady[6] = 0;
+    
+    reg_DataReady[7] = 0;
     
     for (addr = 0; addr < MEMSIZE; addr = addr + 1)
     begin
@@ -530,19 +539,19 @@ module mm_tb(clock);
     begin
       always @(posedge clock)
       begin
-        Mout_oe_ram_queue_next[`MEM_DELAY_READ*2 -1 : 2] <= Mout_oe_ram_queue_curr[(`MEM_DELAY_READ-1) *2 -1 : 0];
+        Mout_oe_ram_queue_next[`MEM_DELAY_READ*8 -1 : 8] <= Mout_oe_ram_queue_curr[(`MEM_DELAY_READ-1) *8 -1 : 0];
       end
       always @(*)
       begin
-        Mout_oe_ram_queue_curr[`MEM_DELAY_READ*2 -1 : 2] = Mout_oe_ram_queue_next[`MEM_DELAY_READ*2 -1 : 2];
-        Mout_oe_ram_queue_curr[1 :0] = Mout_oe_ram;
+        Mout_oe_ram_queue_curr[`MEM_DELAY_READ*8 -1 : 8] = Mout_oe_ram_queue_next[`MEM_DELAY_READ*8 -1 : 8];
+        Mout_oe_ram_queue_curr[7 :0] = Mout_oe_ram;
       end
     end
     else
     begin
       always @(*)
       begin
-        Mout_oe_ram_queue_curr[1 :0] = Mout_oe_ram;
+        Mout_oe_ram_queue_curr[7 :0] = Mout_oe_ram;
       end
     end
   endgenerate
@@ -552,19 +561,19 @@ module mm_tb(clock);
     begin
       always @(posedge clock)
       begin
-        Mout_we_ram_queue_next[`MEM_DELAY_WRITE*2 -1 : 2] <= Mout_we_ram_queue_curr[(`MEM_DELAY_WRITE-1) *2 -1 : 0];
+        Mout_we_ram_queue_next[`MEM_DELAY_WRITE*8 -1 : 8] <= Mout_we_ram_queue_curr[(`MEM_DELAY_WRITE-1) *8 -1 : 0];
       end
       always @(*)
       begin
-        Mout_we_ram_queue_curr[`MEM_DELAY_WRITE*2 -1 : 2] = Mout_we_ram_queue_next[`MEM_DELAY_WRITE*2 -1 : 2];
-        Mout_we_ram_queue_curr[1 :0] = Mout_we_ram;
+        Mout_we_ram_queue_curr[`MEM_DELAY_WRITE*8 -1 : 8] = Mout_we_ram_queue_next[`MEM_DELAY_WRITE*8 -1 : 8];
+        Mout_we_ram_queue_curr[7 :0] = Mout_we_ram;
       end
     end
     else
     begin
       always @(*)
       begin
-        Mout_we_ram_queue_curr[1 :0] = Mout_we_ram;
+        Mout_we_ram_queue_curr[7 :0] = Mout_we_ram;
       end
     end
   endgenerate
@@ -574,19 +583,19 @@ module mm_tb(clock);
     begin
       always @(posedge clock)
       begin
-        Mout_addr_ram_queue_next[`MEM_MAX_DELAY*64 -1 : 64] <= Mout_addr_ram_queue_curr[(`MEM_MAX_DELAY-1) *64 -1 : 0];
+        Mout_addr_ram_queue_next[`MEM_MAX_DELAY*256 -1 : 256] <= Mout_addr_ram_queue_curr[(`MEM_MAX_DELAY-1) *256 -1 : 0];
       end
       always @(*)
       begin
-        Mout_addr_ram_queue_curr[`MEM_MAX_DELAY*64 -1 : 64] = Mout_addr_ram_queue_next[`MEM_MAX_DELAY*64 -1 : 64];
-        Mout_addr_ram_queue_curr[63 :0] = Mout_addr_ram;
+        Mout_addr_ram_queue_curr[`MEM_MAX_DELAY*256 -1 : 256] = Mout_addr_ram_queue_next[`MEM_MAX_DELAY*256 -1 : 256];
+        Mout_addr_ram_queue_curr[255 :0] = Mout_addr_ram;
       end
     end
     else
     begin
       always @(*)
       begin
-        Mout_addr_ram_queue_curr[63 :0] = Mout_addr_ram;
+        Mout_addr_ram_queue_curr[255 :0] = Mout_addr_ram;
       end
     end
   endgenerate
@@ -596,19 +605,19 @@ module mm_tb(clock);
     begin
       always @(posedge clock)
       begin
-        Mout_Wdata_ram_queue_next[`MEM_DELAY_WRITE*64 -1 : 64] <= Mout_Wdata_ram_queue_curr[(`MEM_DELAY_WRITE-1) *64 -1 : 0];
+        Mout_Wdata_ram_queue_next[`MEM_DELAY_WRITE*256 -1 : 256] <= Mout_Wdata_ram_queue_curr[(`MEM_DELAY_WRITE-1) *256 -1 : 0];
       end
       always @(*)
       begin
-        Mout_Wdata_ram_queue_curr[`MEM_DELAY_WRITE*64 -1 : 64] = Mout_Wdata_ram_queue_next[`MEM_DELAY_WRITE*64 -1 : 64];
-        Mout_Wdata_ram_queue_curr[63 :0] = Mout_Wdata_ram;
+        Mout_Wdata_ram_queue_curr[`MEM_DELAY_WRITE*256 -1 : 256] = Mout_Wdata_ram_queue_next[`MEM_DELAY_WRITE*256 -1 : 256];
+        Mout_Wdata_ram_queue_curr[255 :0] = Mout_Wdata_ram;
       end
     end
     else
     begin
       always @(*)
       begin
-        Mout_Wdata_ram_queue_curr[63 :0] = Mout_Wdata_ram;
+        Mout_Wdata_ram_queue_curr[255 :0] = Mout_Wdata_ram;
       end
     end
   endgenerate
@@ -618,28 +627,28 @@ module mm_tb(clock);
     begin
       always @(posedge clock)
       begin
-        Mout_data_ram_size_queue_next[`MEM_MAX_DELAY*12 -1 : 12] <= Mout_data_ram_size_queue_curr[(`MEM_MAX_DELAY-1) *12 -1 : 0];
+        Mout_data_ram_size_queue_next[`MEM_MAX_DELAY*48 -1 : 48] <= Mout_data_ram_size_queue_curr[(`MEM_MAX_DELAY-1) *48 -1 : 0];
       end
       always @(*)
       begin
-        Mout_data_ram_size_queue_curr[`MEM_MAX_DELAY*12 -1 : 12] = Mout_data_ram_size_queue_next[`MEM_MAX_DELAY*12 -1 : 12];
-        Mout_data_ram_size_queue_curr[11 :0] = Mout_data_ram_size;
+        Mout_data_ram_size_queue_curr[`MEM_MAX_DELAY*48 -1 : 48] = Mout_data_ram_size_queue_next[`MEM_MAX_DELAY*48 -1 : 48];
+        Mout_data_ram_size_queue_curr[47 :0] = Mout_data_ram_size;
       end
     end
     else
     begin
       always @(*)
       begin
-        Mout_data_ram_size_queue_curr[11 :0] = Mout_data_ram_size;
+        Mout_data_ram_size_queue_curr[47 :0] = Mout_data_ram_size;
       end
     end
   endgenerate
   
   always @(*)
   begin
-    if(Mout_we_ram_queue_curr[2*(`MEM_DELAY_WRITE-1) + 0] === 1'b1)
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 0] === 1'b1)
     begin
-      mask[31:0] = (1 << Mout_data_ram_size_queue_curr[5+(`MEM_DELAY_WRITE-1)*12 : 0+(`MEM_DELAY_WRITE-1)*12]) -1;
+      mask[31:0] = (1 << Mout_data_ram_size_queue_curr[5+(`MEM_DELAY_WRITE-1)*48 : 0+(`MEM_DELAY_WRITE-1)*48]) -1;
     end
     else
     begin
@@ -649,9 +658,9 @@ module mm_tb(clock);
   
   always @(*)
   begin
-    if(Mout_we_ram_queue_curr[2*(`MEM_DELAY_WRITE-1) + 1] === 1'b1)
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 1] === 1'b1)
     begin
-      mask[63:32] = (1 << Mout_data_ram_size_queue_curr[11+(`MEM_DELAY_WRITE-1)*12 : 6+(`MEM_DELAY_WRITE-1)*12]) -1;
+      mask[63:32] = (1 << Mout_data_ram_size_queue_curr[11+(`MEM_DELAY_WRITE-1)*48 : 6+(`MEM_DELAY_WRITE-1)*48]) -1;
     end
     else
     begin
@@ -659,54 +668,264 @@ module mm_tb(clock);
     end
   end
   
-  // OffChip Memory write
-  always @(posedge clock)
+  always @(*)
   begin
-    if (Mout_we_ram_queue_curr[0+2*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] < (base_addr + MEMSIZE))
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 2] === 1'b1)
     begin
-      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] & mask[31:0]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] + 0 - base_addr]} & ~(mask[31:0]));
+      mask[95:64] = (1 << Mout_data_ram_size_queue_curr[17+(`MEM_DELAY_WRITE-1)*48 : 12+(`MEM_DELAY_WRITE-1)*48]) -1;
     end
-    if (Mout_we_ram_queue_curr[1+2*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] < (base_addr + MEMSIZE))
+    else
     begin
-      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] & mask[63:32]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] + 0 - base_addr]} & ~(mask[63:32]));
+      mask[95:64] = 0;
     end
   end
   
   always @(*)
   begin
-    M_Rdata_ram_temp[31:0] = ((base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] + 0 - base_addr]} : 32'b0;
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 3] === 1'b1)
+    begin
+      mask[127:96] = (1 << Mout_data_ram_size_queue_curr[23+(`MEM_DELAY_WRITE-1)*48 : 18+(`MEM_DELAY_WRITE-1)*48]) -1;
+    end
+    else
+    begin
+      mask[127:96] = 0;
+    end
+  end
+  
+  always @(*)
+  begin
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 4] === 1'b1)
+    begin
+      mask[159:128] = (1 << Mout_data_ram_size_queue_curr[29+(`MEM_DELAY_WRITE-1)*48 : 24+(`MEM_DELAY_WRITE-1)*48]) -1;
+    end
+    else
+    begin
+      mask[159:128] = 0;
+    end
+  end
+  
+  always @(*)
+  begin
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 5] === 1'b1)
+    begin
+      mask[191:160] = (1 << Mout_data_ram_size_queue_curr[35+(`MEM_DELAY_WRITE-1)*48 : 30+(`MEM_DELAY_WRITE-1)*48]) -1;
+    end
+    else
+    begin
+      mask[191:160] = 0;
+    end
+  end
+  
+  always @(*)
+  begin
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 6] === 1'b1)
+    begin
+      mask[223:192] = (1 << Mout_data_ram_size_queue_curr[41+(`MEM_DELAY_WRITE-1)*48 : 36+(`MEM_DELAY_WRITE-1)*48]) -1;
+    end
+    else
+    begin
+      mask[223:192] = 0;
+    end
+  end
+  
+  always @(*)
+  begin
+    if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 7] === 1'b1)
+    begin
+      mask[255:224] = (1 << Mout_data_ram_size_queue_curr[47+(`MEM_DELAY_WRITE-1)*48 : 42+(`MEM_DELAY_WRITE-1)*48]) -1;
+    end
+    else
+    begin
+      mask[255:224] = 0;
+    end
+  end
+  
+  // OffChip Memory write
+  always @(posedge clock)
+  begin
+    if (Mout_we_ram_queue_curr[0+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] & mask[31:0]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[31:0]));
+    end
+    if (Mout_we_ram_queue_curr[1+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] & mask[63:32]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[63:32]));
+    end
+    if (Mout_we_ram_queue_curr[2+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] & mask[95:64]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[95:64]));
+    end
+    if (Mout_we_ram_queue_curr[3+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] & mask[127:96]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[127:96]));
+    end
+    if (Mout_we_ram_queue_curr[4+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] & mask[159:128]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[159:128]));
+    end
+    if (Mout_we_ram_queue_curr[5+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] & mask[191:160]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[191:160]));
+    end
+    if (Mout_we_ram_queue_curr[6+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] & mask[223:192]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[223:192]));
+    end
+    if (Mout_we_ram_queue_curr[7+8*(`MEM_DELAY_WRITE-1)] === 1'b1 && base_addr <= Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE))
+    begin
+      {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} = (Mout_Wdata_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] & mask[255:224]) | ({_bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] + 0 - base_addr]} & ~(mask[255:224]));
+    end
+  end
+  
+  always @(*)
+  begin
+    M_Rdata_ram_temp[31:0] = ((base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
   end
   assign M_Rdata_ram[31:0] = M_Rdata_ram_temp[31:0];
   
   always @(*)
   begin
-    M_Rdata_ram_temp[63:32] = ((base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] + 0 - base_addr]} : 32'b0;
+    M_Rdata_ram_temp[63:32] = ((base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
   end
   assign M_Rdata_ram[63:32] = M_Rdata_ram_temp[63:32];
   
   always @(*)
   begin
+    M_Rdata_ram_temp[95:64] = ((base_addr <= Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[95:64] = M_Rdata_ram_temp[95:64];
   
-    M_DataRdy_temp[0] =0;if(Mout_we_ram_queue_curr[2*(`MEM_DELAY_WRITE-1) + 0] === 1'b1)
+  always @(*)
+  begin
+    M_Rdata_ram_temp[127:96] = ((base_addr <= Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[127:96] = M_Rdata_ram_temp[127:96];
+  
+  always @(*)
+  begin
+    M_Rdata_ram_temp[159:128] = ((base_addr <= Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[159:128] = M_Rdata_ram_temp[159:128];
+  
+  always @(*)
+  begin
+    M_Rdata_ram_temp[191:160] = ((base_addr <= Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[191:160] = M_Rdata_ram_temp[191:160];
+  
+  always @(*)
+  begin
+    M_Rdata_ram_temp[223:192] = ((base_addr <= Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[223:192] = M_Rdata_ram_temp[223:192];
+  
+  always @(*)
+  begin
+    M_Rdata_ram_temp[255:224] = ((base_addr <= Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE))) ? {_bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] + 3 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] + 2 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] + 1 - base_addr], _bambu_testbench_mem_[Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] + 0 - base_addr]} : 32'b0;
+  end
+  assign M_Rdata_ram[255:224] = M_Rdata_ram_temp[255:224];
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[0] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 0] === 1'b1)
     begin
-      M_DataRdy_temp[0] =(base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*64:0+(`MEM_DELAY_WRITE-1)*64] < (base_addr + MEMSIZE));
+      M_DataRdy_temp[0] =(base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_WRITE-1)*256:0+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
     end
-    else if(Mout_oe_ram_queue_curr[2*(`MEM_DELAY_READ-1) + 0] === 1'b1)
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 0] === 1'b1)
     begin
-      M_DataRdy_temp[0] =(base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*64:0+(`MEM_DELAY_READ-1)*64] < (base_addr + MEMSIZE));
+      M_DataRdy_temp[0] =(base_addr <= Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[31+(`MEM_DELAY_READ-1)*256:0+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
     end
   end
   
   always @(*)
   begin
   
-    M_DataRdy_temp[1] =0;if(Mout_we_ram_queue_curr[2*(`MEM_DELAY_WRITE-1) + 1] === 1'b1)
+    M_DataRdy_temp[1] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 1] === 1'b1)
     begin
-      M_DataRdy_temp[1] =(base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*64:32+(`MEM_DELAY_WRITE-1)*64] < (base_addr + MEMSIZE));
+      M_DataRdy_temp[1] =(base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_WRITE-1)*256:32+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
     end
-    else if(Mout_oe_ram_queue_curr[2*(`MEM_DELAY_READ-1) + 1] === 1'b1)
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 1] === 1'b1)
     begin
-      M_DataRdy_temp[1] =(base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*64:32+(`MEM_DELAY_READ-1)*64] < (base_addr + MEMSIZE));
+      M_DataRdy_temp[1] =(base_addr <= Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[63+(`MEM_DELAY_READ-1)*256:32+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[2] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 2] === 1'b1)
+    begin
+      M_DataRdy_temp[2] =(base_addr <= Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[95+(`MEM_DELAY_WRITE-1)*256:64+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 2] === 1'b1)
+    begin
+      M_DataRdy_temp[2] =(base_addr <= Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[95+(`MEM_DELAY_READ-1)*256:64+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[3] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 3] === 1'b1)
+    begin
+      M_DataRdy_temp[3] =(base_addr <= Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[127+(`MEM_DELAY_WRITE-1)*256:96+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 3] === 1'b1)
+    begin
+      M_DataRdy_temp[3] =(base_addr <= Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[127+(`MEM_DELAY_READ-1)*256:96+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[4] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 4] === 1'b1)
+    begin
+      M_DataRdy_temp[4] =(base_addr <= Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[159+(`MEM_DELAY_WRITE-1)*256:128+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 4] === 1'b1)
+    begin
+      M_DataRdy_temp[4] =(base_addr <= Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[159+(`MEM_DELAY_READ-1)*256:128+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[5] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 5] === 1'b1)
+    begin
+      M_DataRdy_temp[5] =(base_addr <= Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[191+(`MEM_DELAY_WRITE-1)*256:160+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 5] === 1'b1)
+    begin
+      M_DataRdy_temp[5] =(base_addr <= Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[191+(`MEM_DELAY_READ-1)*256:160+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[6] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 6] === 1'b1)
+    begin
+      M_DataRdy_temp[6] =(base_addr <= Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[223+(`MEM_DELAY_WRITE-1)*256:192+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 6] === 1'b1)
+    begin
+      M_DataRdy_temp[6] =(base_addr <= Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[223+(`MEM_DELAY_READ-1)*256:192+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
+    end
+  end
+  
+  always @(*)
+  begin
+  
+    M_DataRdy_temp[7] =0;if(Mout_we_ram_queue_curr[8*(`MEM_DELAY_WRITE-1) + 7] === 1'b1)
+    begin
+      M_DataRdy_temp[7] =(base_addr <= Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] && Mout_addr_ram_queue_curr[255+(`MEM_DELAY_WRITE-1)*256:224+(`MEM_DELAY_WRITE-1)*256] < (base_addr + MEMSIZE));
+    end
+    else if(Mout_oe_ram_queue_curr[8*(`MEM_DELAY_READ-1) + 7] === 1'b1)
+    begin
+      M_DataRdy_temp[7] =(base_addr <= Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] && Mout_addr_ram_queue_curr[255+(`MEM_DELAY_READ-1)*256:224+(`MEM_DELAY_READ-1)*256] < (base_addr + MEMSIZE));
     end
   end
   
@@ -723,6 +942,54 @@ module mm_tb(clock);
       $finish;
     end
     if (Mout_we_ram[1]===1'b1 && Mout_oe_ram[1]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[2]===1'b1 && Mout_oe_ram[2]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[3]===1'b1 && Mout_oe_ram[3]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[4]===1'b1 && Mout_oe_ram[4]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[5]===1'b1 && Mout_oe_ram[5]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[6]===1'b1 && Mout_oe_ram[6]===1'b1)
+    begin
+    // error
+      $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");
+      $fclose(res_file);
+      $fclose(file);
+      $finish;
+    end
+    if (Mout_we_ram[7]===1'b1 && Mout_oe_ram[7]===1'b1)
     begin
     // error
       $display("ERROR - Mout_we_ram and Mout_oe_ram both enabled");

@@ -1,5 +1,6 @@
 #include "cpu_functions.h"
 
+typedef double bench_t;
 
 void fft_function(bench_t* data, int64_t nn){
 	int64_t n, mmax, m, j, istep, i;
@@ -27,7 +28,7 @@ void fft_function(bench_t* data, int64_t nn){
     while (n>mmax) {
         istep = mmax<<1;
         theta = -(2*M_PI/mmax);
-        wtemp = sin(0.5*theta);
+        wtemp = sin(theta/2);
         wpr = -2.0*wtemp*wtemp;
         wpi = sin(theta);
         wr = 1.0;

@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# xsim v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon May  6 18:43:39 2024
+# Process ID: 9044
+# Current directory: /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM
+# Command line: xsim -mode tcl -source {xsim.dir/matrix_multiplicationtb_behav/xsim_script.tcl}
+# Log file: /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/xsim.log
+# Journal file: /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/xsim.jou
+# Running On: JACK, OS: Linux, CPU Frequency: 1995.384 MHz, CPU Physical cores: 4, Host memory: 4053 MB
+#-----------------------------------------------------------
+source xsim.dir/matrix_multiplicationtb_behav/xsim_script.tcl
+# xsim {matrix_multiplicationtb_behav} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+Start reading vector           1's values from input file.
+
+Reading of vector values from input file completed. Simulation started.
+Simulation ended after               263763 cycles.
+
+Simulation FAILED
+
+$finish called at time : 395748 ns : File "/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output/simulation/testbench_matrix_multiplication.v" Line 949
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1461.762 ; gain = 0.000 ; free physical = 1020 ; free virtual = 3601
+exit
+INFO: [Common 17-206] Exiting xsim at Mon May  6 18:44:11 2024...

@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<function>
+  <testbench A_ROWS="2" A_COLS="7" B_COLS="19"/>
+</function>

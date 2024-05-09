@@ -57,8 +57,8 @@ proc dump_statistics {  } {
     set design_req 0
   }
   set design_delay [expr {$design_req - $design_slack}]
-  file delete -force /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm_report.xml 
-  set ofile_report [open /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm_report.xml w]
+  file delete -force /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm_report.xml 
+  set ofile_report [open /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm_report.xml w]
   puts $ofile_report "<?xml version=\"1.0\"?>"
   puts $ofile_report "<document>"
   puts $ofile_report "  <application>"
@@ -78,11 +78,11 @@ proc dump_statistics {  } {
   close $ofile_report
 }; #END PROC
 set_param general.maxThreads 1
-set outputDir /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow
+set outputDir /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow
 file mkdir $outputDir
 create_project mm -part xc7z020clg484-1 -force
-read_verilog /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/mm.v
-read_xdc /root/Desktop/Projects/examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm.sdc
+read_verilog /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/mm.v
+read_xdc /root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output//Synthesis/vivado_flow/mm.sdc
 synth_design -top mm -part xc7z020clg484-1
 write_checkpoint -force $outputDir/post_synth.dcp
 report_timing_summary -file $outputDir/post_synth_timing_summary.rpt

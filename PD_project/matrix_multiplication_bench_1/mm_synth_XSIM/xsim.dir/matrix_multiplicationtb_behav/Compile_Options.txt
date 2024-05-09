@@ -1,0 +1,1 @@
+--debug "off" -L "work" -L "unifast_ver" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "matrix_multiplicationtb_behav" --prj "/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//xsim_beh/matrix_multiplication.prj" "work.matrix_multiplication_tb_top" -O3 -nolog -stat -R 

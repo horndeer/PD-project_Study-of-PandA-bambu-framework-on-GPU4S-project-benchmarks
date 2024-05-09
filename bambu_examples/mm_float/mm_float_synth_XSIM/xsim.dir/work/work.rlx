@@ -1,0 +1,6 @@
+0.7
+2020.2
+Oct 13 2023
+20:21:30
+/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/HLS_output/simulation/testbench_mm.v,1715018900,verilog,,,,mm_tb;mm_tb_top,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,
+/root/Desktop/Projects/bambu_examples/mm_float/mm_float_synth_XSIM/mm.v,1715018899,verilog,,,,ASSIGN_UNSIGNED_FU;IIdata_converter_FU;IUdata_converter_FU;MEMORY_CTRLN;MUX_GATE;SIMPLEJOIN_FU;UIdata_converter_FU;UUdata_converter_FU;__float_adde8m23b_127nih;__float_mule8m23b_127nih;_mm;constant_value;controller___float_adde8m23b_127nih;controller___float_mule8m23b_127nih;controller_mm;datapath___float_adde8m23b_127nih;datapath___float_mule8m23b_127nih;datapath_mm;flipflop_AR;lshift_expr_FU;mm;multi_read_cond_FU;read_cond_FU;register_SE;register_STD;rshift_expr_FU;truth_and_expr_FU;truth_not_expr_FU;truth_or_expr_FU;truth_xor_expr_FU;ui_bit_and_expr_FU;ui_bit_ior_concat_expr_FU;ui_bit_ior_expr_FU;ui_bit_xor_expr_FU;ui_cond_expr_FU;ui_eq_expr_FU;ui_extract_bit_expr_FU;ui_lshift_expr_FU;ui_lt_expr_FU;ui_minus_expr_FU;ui_mult_expr_FU;ui_ne_expr_FU;ui_plus_expr_FU;ui_pointer_plus_expr_FU;ui_rshift_expr_FU;ui_ternary_plus_expr_FU;ui_ternary_pm_expr_FU,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,

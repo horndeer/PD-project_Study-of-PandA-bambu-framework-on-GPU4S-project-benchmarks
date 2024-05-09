@@ -1,0 +1,6 @@
+0.7
+2020.2
+Oct 13 2023
+20:21:30
+/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output/simulation/testbench_matrix_multiplication.v,1715012257,verilog,,,,matrix_multiplication_tb;matrix_multiplication_tb_top,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,
+/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/matrix_multiplication.v,1715012254,verilog,,,,ASSIGN_UNSIGNED_FU;BMEMORY_CTRLN;IUdata_converter_FU;MUX_GATE;UIconvert_expr_FU;UIdata_converter_FU;UUconvert_expr_FU;UUdata_converter_FU;_matrix_multiplication;constant_value;controller_matrix_multiplication;datapath_matrix_multiplication;flipflop_AR;lshift_expr_FU;lut_expr_FU;matrix_multiplication;read_cond_FU;register_SE;register_STD;rshift_expr_FU;ui_bit_and_expr_FU;ui_bit_ior_concat_expr_FU;ui_bit_ior_expr_FU;ui_bit_not_expr_FU;ui_bit_xor_expr_FU;ui_cond_expr_FU;ui_eq_expr_FU;ui_extract_bit_expr_FU;ui_lshift_expr_FU;ui_lt_expr_FU;ui_minus_expr_FU;ui_mult_expr_FU;ui_ne_expr_FU;ui_plus_expr_FU;ui_pointer_plus_expr_FU;ui_rshift_expr_FU;ui_ternary_plus_expr_FU;ui_ternary_pm_expr_FU,,secureip;unifast_ver;unimacro_ver;unisims_ver;work,,,,,,

@@ -5,8 +5,8 @@
 
 # Synthesis script for COMPONENT: matrix_multiplication
 
-export PANDA_DATA_INSTALLDIR=/tmp/.mount_bambu-wVKTnh/usr/share/panda/
-export CURR_WORKDIR=/root/Desktop/Projects/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM
+export PANDA_DATA_INSTALLDIR=/tmp/.mount_bambu-IJj01h/usr/share/panda/
+export CURR_WORKDIR=/home/paulevers/PD_project/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM
 : ${ABC_DRIVER_CELL:=BUFx2_ASAP7_75t_R}
 export ABC_DRIVER_CELL
 : ${ABC_LOAD_IN_FF:=3.898}
@@ -90,7 +90,7 @@ export TIELO_CELL_AND_PORT
 : ${WIRE_RC_LAYER:=M3}
 export WIRE_RC_LAYER
 # STEP: bash_flow
-cd /root/Desktop/Projects/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM
-bash /root/Desktop/Projects/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM/HLS_output//Synthesis/bash_flow_3/bash_script.sh
+cd /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM
+bash /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_2/mm_synth_XSIM/HLS_output//Synthesis/bash_flow_4/bash_script.sh
 
 

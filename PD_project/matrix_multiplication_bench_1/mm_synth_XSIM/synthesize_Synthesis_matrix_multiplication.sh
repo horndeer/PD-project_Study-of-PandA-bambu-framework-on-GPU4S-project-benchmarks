@@ -9,7 +9,7 @@
 . /opt/Xilinx/Vivado/2023.2/settings64.sh >& /dev/null; 
 
 # STEP: vivado_flow
-cd /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM
-ulimit -s 131072; vivado -mode batch -nojournal -nolog -source /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//Synthesis/vivado_flow_2/vivado.tcl
+cd /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM
+ulimit -s 131072; vivado -mode batch -nojournal -nolog -source /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//Synthesis/vivado_flow_5/vivado.tcl
 
 

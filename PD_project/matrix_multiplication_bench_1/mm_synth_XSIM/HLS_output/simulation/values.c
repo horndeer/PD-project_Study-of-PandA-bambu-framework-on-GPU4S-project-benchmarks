@@ -1,7 +1,7 @@
 /*
  * Politecnico di Milano
- * Code created using PandA - Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main - Date 2024-05-06T18:17:34
- * /tmp/.mount_bambu-lvzWg8/usr/bin/bambu executed with: /tmp/.mount_bambu-lvzWg8/usr/bin/bambu --clock-period=1.5 --std=c99 --top-fname=matrix_multiplication --generate-tb=/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/test.xml --simulator=XSIM --experimental-setup=BAMBU-PERFORMANCE-MP /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/functions2.c 
+ * Code created using PandA - Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main - Date 2024-05-13T09:19:17
+ * /tmp/.mount_bambu-htEoCF/usr/bin/bambu executed with: /tmp/.mount_bambu-htEoCF/usr/bin/bambu --clock-period=1.5 --std=c99 --top-fname=matrix_multiplication --generate-tb=/home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/test.xml --simulator=XSIM --experimental-setup=BAMBU-PERFORMANCE-MP /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/functions2.c 
  */
 #define _FILE_OFFSET_BITS 64
 
@@ -80,9 +80,9 @@ int main()
 {
    unsigned long long __testbench_index;
    __standard_exit = 0;
-   __bambu_testbench_fp = fopen("/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt", "w");
+   __bambu_testbench_fp = fopen("/home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt", "w");
    if (!__bambu_testbench_fp) {
-      perror("can't open file: /root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt");
+      perror("can't open file: /home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt");
       exit(1);
    }
    

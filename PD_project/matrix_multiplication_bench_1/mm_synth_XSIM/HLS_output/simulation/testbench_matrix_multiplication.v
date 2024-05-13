@@ -206,7 +206,7 @@ module matrix_multiplication_tb(clock);
   initial
   begin
     // OPEN FILE WITH VALUES FOR SIMULATION
-    file = $fopen("/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt","r");
+    file = $fopen("/home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/HLS_output//simulation/values.txt","r");
     // Error in file open
     if (file == `NULL)
     begin
@@ -214,7 +214,7 @@ module matrix_multiplication_tb(clock);
       $finish;// Terminate
           end
     // OPEN FILE WHERE results will be written
-    res_file = $fopen("/root/Desktop/Projects/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/results.txt","w");
+    res_file = $fopen("/home/paulevers/PD_project/PD_project/matrix_multiplication_bench_1/mm_synth_XSIM/results.txt","w");
     
     // Error in file open
     if (res_file == `NULL)

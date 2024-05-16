@@ -20,32 +20,35 @@ typedef float result_bench_t;
 #elif DOUBLE
 typedef double bench_t;
 typedef double result_bench_t;
+#else
+typedef double bench_t;
+typedef double result_bench_t;
 #endif
 
 #ifdef BIGENDIAN
 // bigendian version
 union
+{
+	double f;
+	struct
 	{
-		double f;
-		struct
-		{
-			unsigned char a,b,c,d,e,f,g,h;
-		}binary_values;
-	} binary_float;
+		unsigned char a, b, c, d, e, f, g, h;
+	} binary_values;
+} binary_float;
 #else
 // littelendian version
 union
+{
+	double f;
+	struct
 	{
-		double f;
-		struct
-		{
-			unsigned char h,g,f,e,d,c,b,a;
-		}binary_values;
-	} binary_float;
+		unsigned char h, g, f, e, d, c, b, a;
+	} binary_values;
+} binary_float;
 #endif
 
-
-struct BenchmarkParameters{
+struct BenchmarkParameters
+{
 	int size = 0;
 	unsigned int gpu = 0;
 	bool verification = false;
@@ -62,10 +65,10 @@ struct BenchmarkParameters{
 	char output_file[100] = "";
 };
 
-void correlation_2D(const bench_t* A,const bench_t* B, result_bench_t* R ,const int size);
-bool compare_values(const result_bench_t* host,const result_bench_t* device);
-bool compare_vectors(const bench_t* host,const bench_t* device, const int size);
-void print_double_hexadecimal_values(const char* filename, result_bench_t* float_vector,  unsigned int size);
-void get_double_hexadecimal_values(const char* filename, bench_t* float_vector, unsigned int size);
+void correlation_2D(const bench_t *A, const bench_t *B, result_bench_t *R, const int size);
+bool compare_values(const result_bench_t *host, const result_bench_t *device);
+bool compare_vectors(const bench_t *host, const bench_t *device, const int size);
+void print_double_hexadecimal_values(const char *filename, result_bench_t *float_vector, unsigned int size);
+void get_double_hexadecimal_values(const char *filename, bench_t *float_vector, unsigned int size);
 long int get_timestamp();
 #endif

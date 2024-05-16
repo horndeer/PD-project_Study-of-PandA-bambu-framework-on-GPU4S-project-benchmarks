@@ -1,9 +1,6 @@
 #include "cpu_functions.h"
 
-#define max(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a > _b ? _a : _b; })
+typedef double bench_t;
 
 void matrix_multiplication(const bench_t* A, const bench_t* B, bench_t* C,const unsigned int n, const unsigned int m, const unsigned int w ){
 	for (unsigned int i = 0; i < n; ++i)
@@ -35,32 +32,6 @@ void relu(const bench_t* A, bench_t* B, const unsigned int size)
 			}
 		}
 	}
-}
-
-void max_pooling(const bench_t* A, bench_t* B,const unsigned int size,const unsigned int stride,  const unsigned int lateral_stride){
-	unsigned int stride_size = stride * stride;
-	bench_t max_value = 0;
-	for (unsigned int i = 0; i < size; i+= stride)
-	{
-		for (unsigned int j = 0; j < size; j+= stride)
-		{
-			max_value = A[i*size+j]; // init value
-			//printf("init %f pos i %d, pos j %d\n", max_value, i, j);
-			for(unsigned int x = 0; x < stride; ++x)
-			{
-				for(unsigned int y = 0; y < stride; ++y)
-				{
-					//printf("max %f, value %f, pos x %d, pos y %d \n", max_value, A[(i + x) * size + (j +y)],i + x , j +y);
-					max_value = max(max_value, A[(i + x) * size + (j +y)]);
-					
-				}
-			}
-			
-			B[(i / stride)* lateral_stride + (j/stride)] = max_value;
-			//printf("value %f, posB x %d, posB y %d \n", B[(i / stride)* lateral_stride + (j/stride)], (i / stride) , (j/stride));
-		}
-	}
-
 }
 
 long int get_timestamp(){

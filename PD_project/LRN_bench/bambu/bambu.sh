@@ -10,7 +10,7 @@ root_dir=$(dirname $script)
 mkdir -p mm_synth_XSIM
 cd mm_synth_XSIM
 echo "# HLS synthesis, testbench generation, simulation with ICARUS and RTL synthesis with OpenRoad"
-timeout 2h bambu $root_dir/cpu_functions.cpp --top-fname=matrix_multiplication --generate-tb=$root_dir/test.xml \
+timeout 2h bambu $root_dir/../cpu_functions/cpu_functions.cpp --top-fname=lrn --generate-tb=$root_dir/test.xml \
               --simulate --evaluation --device-name=asap7-BC --simulator=XSIM --experimental-setup=BAMBU-PERFORMANCE-MP "$@"
 return_value=$?
 if test $return_value != 0; then

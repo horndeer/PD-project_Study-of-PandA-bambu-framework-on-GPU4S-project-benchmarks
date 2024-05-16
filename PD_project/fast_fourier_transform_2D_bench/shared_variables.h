@@ -3,10 +3,13 @@
 
 #ifdef FLOAT
 typedef float bench_t;
-#elif DOUBLE 
+#elif DOUBLE
+typedef double bench_t;
+#else
 typedef double bench_t;
 #endif
-struct COMPLEX{
+struct COMPLEX
+{
 	bench_t x;
 	bench_t y;
 };

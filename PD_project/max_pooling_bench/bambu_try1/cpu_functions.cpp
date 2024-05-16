@@ -1,6 +1,11 @@
 #include "cpu_functions.h"
 
-typedef int bench_t;
+typedef double bench_t;
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
 
 void matrix_multiplication(const bench_t* A, const bench_t* B, bench_t* C,const unsigned int n, const unsigned int m, const unsigned int w ){
 	for (unsigned int i = 0; i < n; ++i)
@@ -16,44 +21,55 @@ void matrix_multiplication(const bench_t* A, const bench_t* B, bench_t* C,const 
 
 }
 
-// void relu(const bench_t* A, bench_t* B, const unsigned int size)
-// {
-// 	for (unsigned int i = 0; i < size; ++i)
-// 	{
-// 		for (unsigned int j = 0; j < size; ++j)
-// 		{
-// 			if (A[i*size+j] > 0)
-// 			{
-// 				B[i*size+j] = A[i*size+j];
-// 			}
-// 			else
-// 			{
-// 				B[i*size+j];
-// 			}
-// 		}
-// 	}
-// }
-
-void lrn(const bench_t* A, bench_t* B, const unsigned int size)
+void relu(const bench_t* A, bench_t* B, const unsigned int size)
 {
-	#ifdef FLOAT
-	const float K = 2;
-	const float ALPHA = 10e-4;
-	const float BETA = 0.75;
-	#else 
-	const double K = 2;
-	const double ALPHA = 10e-4;
-	const double BETA = 0.75;
-	#endif
-
 	for (unsigned int i = 0; i < size; ++i)
 	{
 		for (unsigned int j = 0; j < size; ++j)
 		{
-			B[i*size+j] = A[i*size+j]/pow((K+ALPHA*pow(A[i*size+j],2)),BETA);
+			if (A[i*size+j] > 0)
+			{
+				B[i*size+j] = A[i*size+j];
+			}
+			else
+			{
+				B[i*size+j];
+			}
+		}
+	}
+}
+
+void max_pooling(const bench_t* A, bench_t* B,const unsigned int size,const unsigned int stride,  const unsigned int lateral_stride){
+	unsigned int stride_size = stride * stride;
+	bench_t max_value = 0;
+	for (unsigned int i = 0; i < size; i+= stride)
+	{
+		for (unsigned int j = 0; j < size; j+= stride)
+		{
+			max_value = A[i*size+j]; // init value
+			//printf("init %f pos i %d, pos j %d\n", max_value, i, j);
+			for(unsigned int x = 0; x < stride; ++x)
+			{
+				for(unsigned int y = 0; y < stride; ++y)
+				{
+					//printf("max %f, value %f, pos x %d, pos y %d \n", max_value, A[(i + x) * size + (j +y)],i + x , j +y);
+					max_value = max(max_value, A[(i + x) * size + (j +y)]);
+					
+				}
+			}
+			
+			B[(i / stride)* lateral_stride + (j/stride)] = max_value;
+			//printf("value %f, posB x %d, posB y %d \n", B[(i / stride)* lateral_stride + (j/stride)], (i / stride) , (j/stride));
 		}
 	}
 
+}
+
+long int get_timestamp(){
+	struct timeval time_now{};
+    gettimeofday(&time_now, nullptr);
+    time_t msecs_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
+	return (long int) msecs_time;
 }
 
 bool compare_vectors(const bench_t* host,const bench_t* device, const int size){
@@ -75,35 +91,6 @@ bool compare_vectors(const bench_t* host,const bench_t* device, const int size){
 		return true;
 	#endif
 }
-
-long int get_timestamp(){
-	struct timeval time_now{};
-    gettimeofday(&time_now, nullptr);
-    time_t msecs_time = (time_now.tv_sec * 1000) + (time_now.tv_usec / 1000);
-	return (long int) msecs_time;
-}
-
-bool compare_vectors(const bench_t* host,const bench_t* device, const int size, const double precision){
-	#ifdef INT
-	for (int i = 0; i < size; ++i){
-		if (host[i] != device[i]){
-			printf("Error in element %d is %d but was %d\n", i,device[i], host[i]);
-			return false;
-		}
-	}
-	return true;
-	#else 
-		for (int i = 0; i < size; ++i){
-			if (fabs(host[i] - device[i]) > precision){
-				printf("Error in element %d is %f but was %f\n", i,device[i], host[i]);
-				return false;
-			}
-		}
-		return true;
-	#endif
-}
-
-
 void writeDouble(double *_d, FILE* _f){
 	double locD;
 	int res;

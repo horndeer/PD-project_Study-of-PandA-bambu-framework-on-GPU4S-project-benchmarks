@@ -1,0 +1,159 @@
+root@JACK:~/Desktop/Projects/PD_project/max_pooling_bench/bambu# ./bambu.sh 
+# HLS synthesis, testbench generation, simulation with ICARUS and RTL synthesis with OpenRoad
+ ==  Bambu executed with: /tmp/.mount_bambu-PvDLPO/usr/bin/bambu --top-fname=max_pooling --simulate --evaluation --device-name=asap7-BC --simulator=XSIM --experimental-setup=BAMBU-PERFORMANCE-MP /root/Desktop/Projects/PD_project/max_pooling_bench/bambu/../cpu_functions/cpu_functions.cpp 
+
+
+********************************************************************************
+                    ____                  _
+                   | __ )  __ _ _ __ ___ | |_   _   _
+                   |  _ \ / _` | '_ ` _ \| '_ \| | | |
+                   | |_) | (_| | | | | | | |_) | |_| |
+                   |____/ \__,_|_| |_| |_|_.__/ \__,_|
+
+********************************************************************************
+                         High-Level Synthesis Tool
+
+                         Politecnico di Milano - DEIB
+                          System Architectures Group
+********************************************************************************
+                Copyright (C) 2004-2023 Politecnico di Milano
+ Version: PandA 2023.1 - Revision 04336c437a53bc96ae90b74052c455629946ec8b-main
+
+Target technology = FPGA
+Function call to __float_lte11m52b_1023nih inlined in max_pooling
+
+  Memory allocation information:
+Warning: This function uses unknown addresses: max_pooling
+    BRAM bitsize: 32
+    Spec may not exploit DATA bus width
+    Spec accesses data having an address unknown at compile time
+    Internal data is not externally accessible
+    DATA bus bitsize: 64
+    ADDRESS bus bitsize: 32
+    SIZE bus bitsize: 7
+    Internally allocated memory (no private memories): 0
+    Internally allocated memory: 0
+  Time to perform memory allocation: 0.00 seconds
+
+
+  Module allocation information for function __udivsi3:
+    Number of complex operations: 0
+    Number of complex operations: 0
+  Time to perform module allocation: 0.07 seconds
+
+
+  Scheduling Information of function __udivsi3:
+    Number of control steps: 5
+    Minimum slack: 9.1940432824302007
+    Estimated max frequency (MHz): 1240.7614183244223
+  Time to perform scheduling: 0.00 seconds
+
+
+  State Transition Graph Information of function __udivsi3:
+    Number of states: 3
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function __udivsi3:
+    Bound operations:31/60
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function __udivsi3:
+    Number of storage values inserted: 8
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+
+  Register binding information for function __udivsi3:
+    Register allocation algorithm obtains an optimal result: 7 registers
+  Time to perform register binding: 0.00 seconds
+
+  Clique covering computation completed in 0.00 seconds
+
+  Module binding information for function __udivsi3:
+    Number of modules instantiated: 60
+    Number of performance conflicts: 0
+    Estimated resources area (no Muxes and address logic): 123185
+    Estimated area of MUX21: 0
+    Total estimated area: 123185
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.00 seconds
+
+
+  Register binding information for function __udivsi3:
+    Register allocation algorithm obtains an optimal result: 7 registers
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function __udivsi3:
+    Number of allocated multiplexers (2-to-1 equivalent): 5
+  Time to perform interconnection binding: 0.01 seconds
+
+  Total number of flip-flops in function __udivsi3: 192
+
+  Module allocation information for function max_pooling:
+    Number of complex operations: 5
+    Number of complex operations: 5
+  Time to perform module allocation: 0.05 seconds
+
+
+  Scheduling Information of function max_pooling:
+    Number of control steps: 17
+    Minimum slack: 7.0099455525516303
+    Estimated max frequency (MHz): 334.44207039553163
+  Time to perform scheduling: 0.02 seconds
+
+
+  State Transition Graph Information of function max_pooling:
+    Number of states: 17
+    Done port is registered
+  Time to perform creation of STG: 0.00 seconds
+
+
+  Easy binding information for function max_pooling:
+    Bound operations:44/128
+  Time to perform easy binding: 0.00 seconds
+
+
+  Storage Value Information of function max_pooling:
+    Number of storage values inserted: 38
+  Time to compute storage value information: 0.00 seconds
+
+  Slack computed in 0.00 seconds
+  Weight computation completed in 0.00 seconds
+  False-loop computation completed in 0.00 seconds
+
+  Register binding information for function max_pooling:
+    Register allocation algorithm obtains a sub-optimal result: 31 registers(LB:24)
+  Time to perform register binding: 0.01 seconds
+
+  Clique covering computation completed in 0.01 seconds
+
+  Module binding information for function max_pooling:
+    Number of modules instantiated: 125
+    Number of performance conflicts: 0
+    Estimated resources area (no Muxes and address logic): 281950
+    Estimated area of MUX21: 16794
+    Total estimated area: 298744
+    Estimated number of DSPs: 0
+  Time to perform module binding: 0.01 seconds
+
+
+  Register binding information for function max_pooling:
+    Register allocation algorithm obtains a sub-optimal result: 31 registers(LB:24)
+  Time to perform register binding: 0.00 seconds
+
+
+  Connection Binding Information for function max_pooling:
+    Number of allocated multiplexers (2-to-1 equivalent): 12
+  Time to perform interconnection binding: 0.00 seconds
+
+  Total number of flip-flops in function max_pooling: 851
+Warning: XML file "/root/Desktop/Projects/PD_project/max_pooling_bench/bambu/mm_synth_XSIM/test.xml" cannot be opened, creating a stub with random values
+error -> Value of A is missing in test vector
+
+Please report bugs to <panda-info@polimi.it>

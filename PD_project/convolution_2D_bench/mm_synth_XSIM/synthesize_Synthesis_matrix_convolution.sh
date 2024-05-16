@@ -5,7 +5,7 @@
 
 # Synthesis script for COMPONENT: matrix_convolution
 
-export PANDA_DATA_INSTALLDIR=/tmp/.mount_bambu-zbbfXL/usr/share/panda/
+export PANDA_DATA_INSTALLDIR=/tmp/.mount_bambu-cZWC2P/usr/share/panda/
 export CURR_WORKDIR=/home/paulevers/PD_project/PD_project/convolution_2D_bench/mm_synth_XSIM
 : ${ABC_DRIVER_CELL:=BUFx2_ASAP7_75t_R}
 export ABC_DRIVER_CELL
@@ -91,6 +91,6 @@ export TIELO_CELL_AND_PORT
 export WIRE_RC_LAYER
 # STEP: bash_flow
 cd /home/paulevers/PD_project/PD_project/convolution_2D_bench/mm_synth_XSIM
-bash /home/paulevers/PD_project/PD_project/convolution_2D_bench/mm_synth_XSIM/HLS_output//Synthesis/bash_flow_0/bash_script.sh
+bash /home/paulevers/PD_project/PD_project/convolution_2D_bench/mm_synth_XSIM/HLS_output//Synthesis/bash_flow_3/bash_script.sh
 
 

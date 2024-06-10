@@ -13,7 +13,7 @@ echo "# HLS synthesis, testbench generation, simulation with XSiM and RTL synthe
 # timeout 2h bambu $root_dir/module.c --clock-period=1.5 --std=c99 -s --top-fname=mm --generate-tb=$root_dir/test.xml \
 #                  --evaluation --simulator=ICARUS --device-name=asap7-BC --memory-allocation-policy=NO_BRAM \
 #                  --channels-number=8 --experimental-setup=BAMBU-PERFORMANCE-MP --compiler=I386_CLANG12 -v4 "$@"
-timeout 2h bambu $root_dir/cpu_functions/cpu_functions.cpp --top-fname=fft_function
+timeout 2h bambu $root_dir/cpu_functions/cpu_functions.cpp --top-fname=fft_function --soft-float --flopoco \
               --simulate --evaluation --device-name=asap7-BC --simulator=XSIM --experimental-setup=BAMBU-PERFORMANCE-MP "$@"
 return_value=$?
 if test $return_value != 0; then

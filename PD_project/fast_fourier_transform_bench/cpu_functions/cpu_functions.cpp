@@ -1,6 +1,25 @@
 #include "cpu_functions.h"
 
 typedef double bench_t;
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+double sin20(double x) {
+
+	double result = x; // first term of sinus power serie
+    double term = x;
+
+	// Normalize x to the range [0, 2*pi)
+    while (x < 0) x += 2 * M_PI; // Ensure x is positive
+    while (x >= 2 * M_PI) x -= 2 * M_PI; // Bring x into [0, 2*pi)
+	
+    for (int n = 1; n <= 20; ++n) {
+        term *= -1 * x*x / (2*n* (2*n-1)); 
+        result += term;
+    }
+    return result;
+}
 
 void fft_function(bench_t* data, int64_t nn){
 	int64_t n, mmax, m, j, istep, i;
@@ -28,9 +47,9 @@ void fft_function(bench_t* data, int64_t nn){
     while (n>mmax) {
         istep = mmax<<1;
         theta = -(2*M_PI/mmax);
-        wtemp = sin(theta/2);
+        wtemp = sin20(theta/2);
         wpr = -2.0*wtemp*wtemp;
-        wpi = sin(theta);
+        wpi = sin20(theta);
         wr = 1.0;
         wi = 0.0;
 

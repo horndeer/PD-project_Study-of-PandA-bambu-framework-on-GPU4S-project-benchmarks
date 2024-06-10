@@ -2,6 +2,26 @@
 #include <complex.h>
 #include <fftw3.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+double sin20(double x) {
+
+	double result = x; // first term of sinus power serie
+    double term = x;
+
+	// Normalize x to the range [0, 2*pi)
+    while (x < 0) x += 2 * M_PI; // Ensure x is positive
+    while (x >= 2 * M_PI) x -= 2 * M_PI; // Bring x into [0, 2*pi)
+	
+    for (int n = 1; n <= 20; ++n) {
+        term *= -1 * x*x / (2*n* (2*n-1)); 
+        result += term;
+    }
+    return result;
+}
+
 bool FFT2D(COMPLEX **c, int nx, int ny, COMPLEX **out)
 {
 	fftw_plan plan;

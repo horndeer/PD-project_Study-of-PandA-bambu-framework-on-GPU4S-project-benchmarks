@@ -42,18 +42,16 @@ long int get_timestamp()
 	return (long int)msecs_time;
 }
 
-double custom_exp(double x, int terms = 20)
+double exp20(double x)
 {
-    double result = 1.0; // First term of the series is 1
-    double term = 1.0;   // Term to add to the result
-
-    for (int i = 1; i < terms; ++i)
-    {
-        term *= x / i;  // Compute the next term in the series
-        result += term; // Add the term to the result
-    }
-
-    return result;
+	double result = 1; // e^0 = 1
+	double term = 1;
+	for (int n = 1; n <= 20; ++n)
+	{
+		term *= x / n;
+		result += term;
+	}
+	return result;
 }
 
 
@@ -66,7 +64,7 @@ void softmax(const bench_t *A, bench_t *B, const unsigned int size)
 		for (unsigned int j = 0; j < size; ++j)
 		{
 
-			value = custom_exp(A[i * size + j]);
+			value = exp20(A[i * size + j]);
 			sum_values += value;
 			B[i * size + j] = value;
 		}

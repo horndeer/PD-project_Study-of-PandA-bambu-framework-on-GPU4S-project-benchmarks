@@ -1,5 +1,56 @@
 #include "cpu_functions.h"
 
+double ln20(double x) {
+    if (x <= 0) return 0; // Logarithm not defined for non-positive values.
+    double result = 0;
+    // Use a simple series for approximation: ln(x) ≈ sum(((-1)^(n+1))/n * ((x-1)^n)), for n = 1 to infinity.
+    // This is a very basic approximation.
+    for (int n = 1; n <= 20; ++n) {
+        double term = 1.0;
+        for (int i = 1; i <= n; ++i) {
+            term *= (x - 1) / i;
+        }
+        if (n % 2 == 0) {
+            result -= term;
+        } else {
+            result += term;
+        }
+    }
+    return result;
+}
+
+double exp20(double x) {
+    double result = 1; // e^0 = 1
+    double term = 1;
+    for (int n = 1; n <= 20; ++n) {
+        term *= x / n;
+        result += term;
+    }
+    return result;
+}
+
+double pow20(double base, double exponent) {
+    // Check if exponent is an integer
+    if (exponent == static_cast<int>(exponent)) {
+        double result = 1;
+        int intExponent = static_cast<int>(exponent);
+        if (intExponent < 0) {
+            base = 1 / base;
+            intExponent = -intExponent;
+        }
+        for (int i = 0; i < intExponent; ++i) {
+            result *= base;
+        }
+        return result;
+    } else {
+        // Use the existing implementation for non-integer exponents
+        if (base == 0) return 0; // 0 raised to any power is 0.
+        if (exponent == 0) return 1; // Any number raised to the power of 0 is 1.
+        // Use the identity a^b = e^(ln(a) * b)
+        return exp20(ln20(base) * exponent);
+    }
+}
+
 result_bench_t get_mean_value_matrix(const bench_t* A,const int size){
 double suma_valores = 0;
 double final_value = 0;
@@ -38,7 +89,7 @@ void correlation_2D(const bench_t* A, const bench_t* B, result_bench_t* R ,const
 		}
 	}
 	// final calculation
-	*R = (result_bench_t)(acumulate_value_a_b / (result_bench_t)(sqrt(acumulate_value_a_a * acumulate_value_b_b)));
+	*R = (result_bench_t)(acumulate_value_a_b / (result_bench_t)(pow20(acumulate_value_a_a * acumulate_value_b_b, 0.5)));
 
 
 }
